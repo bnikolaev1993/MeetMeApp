@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD3FCD2E20E53BF00050C682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD2D20E53BF00050C682 /* AppDelegate.swift */; };
+		CD3FCD3320E53BF00050C682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3FCD3120E53BF00050C682 /* Main.storyboard */; };
+		CD3FCD3520E53BF20050C682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3FCD3420E53BF20050C682 /* Assets.xcassets */; };
+		CD3FCD3820E53BF20050C682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3FCD3620E53BF20050C682 /* LaunchScreen.storyboard */; };
+		CD3FCD4020E540040050C682 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD3F20E540040050C682 /* RegistrationViewController.swift */; };
+		CD3FCD4320E5516A0050C682 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4220E5516A0050C682 /* NetworkController.swift */; };
+		CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */; };
+		CD3FCD4720E561190050C682 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4620E561190050C682 /* User.swift */; };
+		CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */; };
+		CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0443B20EFEBDA002F2F87 /* MapKit.framework */; };
+		CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0443D20EFED88002F2F87 /* MapViewController.swift */; };
+		CDA0444120EFF120002F2F87 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0444020EFF120002F2F87 /* MapController.swift */; };
+		CDB92B1620FBBF91005162B5 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB92B1520FBBF91005162B5 /* UILabelPadding.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD3FCD2A20E53BF00050C682 /* MeetMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3FCD2D20E53BF00050C682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD3FCD3220E53BF00050C682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD3FCD3420E53BF20050C682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD3FCD3720E53BF20050C682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD3FCD3920E53BF20050C682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD3FCD3F20E540040050C682 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		CD3FCD4220E5516A0050C682 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerNetworkController.swift; sourceTree = "<group>"; };
+		CD3FCD4620E561190050C682 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CDA0443B20EFEBDA002F2F87 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CDA0443D20EFED88002F2F87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CDA0444020EFF120002F2F87 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		CDB92B1520FBBF91005162B5 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD3FCD2720E53BF00050C682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD3FCD2120E53BF00050C682 = {
+			isa = PBXGroup;
+			children = (
+				CD3FCD2C20E53BF00050C682 /* MeetMeApp */,
+				CD3FCD2B20E53BF00050C682 /* Products */,
+				CDA0443A20EFEBDA002F2F87 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD3FCD2B20E53BF00050C682 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD3FCD2A20E53BF00050C682 /* MeetMeApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD3FCD2C20E53BF00050C682 /* MeetMeApp */ = {
+			isa = PBXGroup;
+			children = (
+				CDB92B1220FB8E45005162B5 /* UI */,
+				CDA0443F20EFF101002F2F87 /* Map */,
+				CD3FCD4120E5514C0050C682 /* Networking */,
+				CD3FCD2D20E53BF00050C682 /* AppDelegate.swift */,
+				CD3FCD3120E53BF00050C682 /* Main.storyboard */,
+				CD3FCD3420E53BF20050C682 /* Assets.xcassets */,
+				CD3FCD3620E53BF20050C682 /* LaunchScreen.storyboard */,
+				CD3FCD3920E53BF20050C682 /* Info.plist */,
+				CD3FCD3F20E540040050C682 /* RegistrationViewController.swift */,
+				CD3FCD4620E561190050C682 /* User.swift */,
+				CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */,
+				CDA0443D20EFED88002F2F87 /* MapViewController.swift */,
+			);
+			path = MeetMeApp;
+			sourceTree = "<group>";
+		};
+		CD3FCD4120E5514C0050C682 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CD3FCD4220E5516A0050C682 /* NetworkController.swift */,
+				CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CDA0443A20EFEBDA002F2F87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDA0443B20EFEBDA002F2F87 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDA0443F20EFF101002F2F87 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CDA0444020EFF120002F2F87 /* MapController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		CDB92B1220FB8E45005162B5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CDB92B1520FBBF91005162B5 /* UILabelPadding.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD3FCD2920E53BF00050C682 /* MeetMeApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD3FCD3C20E53BF20050C682 /* Build configuration list for PBXNativeTarget "MeetMeApp" */;
+			buildPhases = (
+				CD3FCD2620E53BF00050C682 /* Sources */,
+				CD3FCD2720E53BF00050C682 /* Frameworks */,
+				CD3FCD2820E53BF00050C682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetMeApp;
+			productName = MeetMeApp;
+			productReference = CD3FCD2A20E53BF00050C682 /* MeetMeApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD3FCD2220E53BF00050C682 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Bogdan Nikolaev";
+				TargetAttributes = {
+					CD3FCD2920E53BF00050C682 = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = CD3FCD2520E53BF00050C682 /* Build configuration list for PBXProject "MeetMeApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD3FCD2120E53BF00050C682;
+			productRefGroup = CD3FCD2B20E53BF00050C682 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD3FCD2920E53BF00050C682 /* MeetMeApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD3FCD2820E53BF00050C682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3FCD3820E53BF20050C682 /* LaunchScreen.storyboard in Resources */,
+				CD3FCD3520E53BF20050C682 /* Assets.xcassets in Resources */,
+				CD3FCD3320E53BF00050C682 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD3FCD2620E53BF00050C682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDB92B1620FBBF91005162B5 /* UILabelPadding.swift in Sources */,
+				CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */,
+				CD3FCD4320E5516A0050C682 /* NetworkController.swift in Sources */,
+				CD3FCD4020E540040050C682 /* RegistrationViewController.swift in Sources */,
+				CD3FCD4720E561190050C682 /* User.swift in Sources */,
+				CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */,
+				CD3FCD2E20E53BF00050C682 /* AppDelegate.swift in Sources */,
+				CDA0444120EFF120002F2F87 /* MapController.swift in Sources */,
+				CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CD3FCD3120E53BF00050C682 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD3FCD3220E53BF00050C682 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD3FCD3620E53BF20050C682 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD3FCD3720E53BF20050C682 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD3FCD3A20E53BF20050C682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD3FCD3B20E53BF20050C682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD3FCD3D20E53BF20050C682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9M646C2A7;
+				INFOPLIST_FILE = MeetMeApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uclan.MeetMeApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD3FCD3E20E53BF20050C682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9M646C2A7;
+				INFOPLIST_FILE = MeetMeApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uclan.MeetMeApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD3FCD2520E53BF00050C682 /* Build configuration list for PBXProject "MeetMeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD3FCD3A20E53BF20050C682 /* Debug */,
+				CD3FCD3B20E53BF20050C682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD3FCD3C20E53BF20050C682 /* Build configuration list for PBXNativeTarget "MeetMeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD3FCD3D20E53BF20050C682 /* Debug */,
+				CD3FCD3E20E53BF20050C682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD3FCD2220E53BF00050C682 /* Project object */;
+}
