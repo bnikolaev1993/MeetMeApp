@@ -6,24 +6,16 @@
 //  Copyright © 2018 Bogdan Nikolaev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import MapKit
 
-class MapController: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapController: MKMapView, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
-    var coordinate2D: CLLocationCoordinate2D
-    var mapView: MKMapView
-    
-    public init(map: MKMapView)
-    {
-        self.mapView = map
-        coordinate2D = CLLocationCoordinate2DMake(53.7702356, -2.7671912)
-        super.init()
-        locationManager.delegate = self
-    }
+    var coordinate2D = CLLocationCoordinate2DMake(53.7702356, -2.7671912)
     
     func setupCoreLocation() {
+        locationManager.delegate = self
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
@@ -38,7 +30,7 @@ class MapController: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     func enableLocationServices () {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
-            mapView.setUserTrackingMode(.follow, animated: true)
+            setUserTrackingMode(.follow, animated: true)
         }
     }
     
@@ -47,8 +39,7 @@ class MapController: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     func updateMapRegion(rangeSpan: CLLocationDistance) {
-        let region = MKCoordinateRegionMakeWithDistance(coordinate2D, rangeSpan, rangeSpan)
-        mapView.region = region
+        region = MKCoordinateRegionMakeWithDistance(coordinate2D, rangeSpan, rangeSpan)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

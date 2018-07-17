@@ -7,21 +7,21 @@
 //
 
 import UIKit
-import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
-    var locationManager = CLLocationManager()
-    var coordinate2D = CLLocationCoordinate2DMake(53.7702356, -2.7671912)
+class MapViewController: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
-    @IBAction func resetLocationBtn(_ sender: Any) {
-        setupCoreLocation()
+    @IBOutlet weak var map: MapController!
+    @IBAction func enableTrackingBtn(_ sender: Any) {
+        map.enableLocationServices()
     }
+    @IBAction func disableTrackingBtn(_ sender: Any) {
+        map.disableLocationServices()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
+        map.setupCoreLocation()
         // Do any additional setup after loading the view.
     }
 
@@ -40,51 +40,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Pass the selected object to the new view controller.
     }
     */
-
-    func setupCoreLocation() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
-            break
-        case .authorizedAlways:
-            enableLocationServices()
-        default:
-            break
-        }
-    }
-    
-    func enableLocationServices () {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            mapView.setUserTrackingMode(.follow, animated: true)
-        }
-    }
-    
-    func disableLocationServices () {
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func updateMapRegion(rangeSpan: CLLocationDistance) {
-        let region = MKCoordinateRegionMakeWithDistance(coordinate2D, rangeSpan, rangeSpan)
-        mapView.region = region
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedAlways:
-            print("authorized")
-        case .denied, .restricted:
-            print("not authorized")
-        default:
-            break
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last!
-        coordinate2D = location.coordinate
-        let displayLocation = "\(location.timestamp) Coord: \(coordinate2D) Alt: \(location.altitude) meters"
-        print(displayLocation)
-        updateMapRegion(rangeSpan: 200)
-    }
 }

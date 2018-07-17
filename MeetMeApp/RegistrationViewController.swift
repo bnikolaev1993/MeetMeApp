@@ -16,7 +16,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var familynameText: UITextField!
     @IBOutlet weak var genderText: UITextField!
     @IBOutlet weak var dobText: UITextField!
-    @IBOutlet weak var errorMsgLabel: UILabel!
+    @IBOutlet weak var errorMsgLabel: UILabelPadding!
     @IBOutlet weak var submitBtnOutlet: UIButton!
     @IBOutlet weak var userCredUI: UIView!
     

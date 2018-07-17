@@ -36,6 +36,7 @@ final class OpenServerNetworkController: NetworkController {
             print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
         } catch {
             completionHandler(false, error)
+            return
         }
         
         // Create and run a URLSession data task with our JSON encoded POST request
@@ -95,14 +96,17 @@ final class OpenServerNetworkController: NetworkController {
             print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
         } catch {
             completionHandler(false, res, error)
+            return
         }
         
         // Create and run a URLSession data task with our JSON encoded POST request
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
+        let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
+            guard response != nil else {
+                completionHandler(false, res, responseError)
+                return
+            }
             let httpResponse = response as! HTTPURLResponse
-            
             print("Server Error: " + httpResponse.statusCode.description)
             guard responseError == nil else {
                 completionHandler(false, res, responseError)

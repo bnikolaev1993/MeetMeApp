@@ -28,8 +28,8 @@ class LoginViewController: UIViewController, StatusProtocol {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         responseLabel.isHidden = true
         if segue.identifier == "regSegue" {
-                let vc = segue.destination as! RegistrationViewController
-                vc.delegate = self
+            let vc = segue.destination as! RegistrationViewController
+            vc.delegate = self
         }
     }
     
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, StatusProtocol {
                 print(response)
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
-                    self.performSegue(withIdentifier: "goToMap", sender: self)
+                    self.performSegue(withIdentifier: "goToMap", sender: sender)
                 }
             }
         }
@@ -53,6 +53,8 @@ class LoginViewController: UIViewController, StatusProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         responseLabel.layer.borderWidth = 0.5
         responseLabel.layer.cornerRadius = 10
         responseLabel.layer.shadowColor = UIColor.black.cgColor
