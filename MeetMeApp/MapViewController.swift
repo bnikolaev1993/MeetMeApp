@@ -17,27 +17,24 @@ class MapViewController: UIViewController {
     @IBAction func disableTrackingBtn(_ sender: Any) {
         map.disableLocationServices()
     }
+    @IBAction func mapTapGesture(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let locationInView = sender.location(in: map)
+            let locationInCoords = map.convert(locationInView, toCoordinateFrom: map)
+            print("You tapped on coordinate: \(locationInCoords)")
+        }
+    }
     
+    var prevVC: MainMenuViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        var vc = sb.instantiateViewController(withIdentifier: "loginVC")
+        vc.dismiss(animated: false)
+        vc = sb.instantiateViewController(withIdentifier: "mainVC")
+        vc.dismiss(animated: false)
         map.setupCoreLocation()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
