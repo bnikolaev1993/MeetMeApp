@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StatusSenderProtocol {
+protocol StatusSenderProtocol: AnyObject{
     func sendStatus(status: String)
     func isLogin(status: Bool)
 }

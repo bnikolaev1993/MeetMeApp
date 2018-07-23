@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var delegate: StatusSenderProtocol?
+    weak var delegate: StatusSenderProtocol?
     
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -33,6 +33,7 @@ class LoginViewController: UIViewController {
             } else {
                 print(response)
                 DispatchQueue.main.async {
+                    self.dismiss(animated: false)
                     self.delegate?.isLogin(status: true)
                 }
             }

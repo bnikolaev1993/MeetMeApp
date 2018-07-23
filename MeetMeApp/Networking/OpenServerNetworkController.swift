@@ -9,16 +9,80 @@
 import Foundation
 
 final class OpenServerNetworkController: NetworkController {
+    func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping (Bool, Error?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let endpoint = "http://macbook-pro-bogdan.local:3012/addPlace"
+            let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            guard let endpointURL = URL(string: safeURLString!) else {
+                completionHandler(false, NetworkControllerError.invalidURL(safeURLString!))
+                return
+            }
+            //Specify this request as being a POST method
+            var request = URLRequest(url: endpointURL)
+            request.httpMethod = "POST"
+            // Make sure that we include headers specifying that our request's HTTP body
+            // will be JSON encoded
+            var headers = request.allHTTPHeaderFields ?? [:]
+            headers["Content-Type"] = "application/json"
+            request.allHTTPHeaderFields = headers
+            
+            // Now let's encode out Post struct into JSON data...
+            let encoder = JSONEncoder()
+            do {
+                let jsonData = try encoder.encode(placeCred)
+                // ... and set our request's HTTP body
+                request.httpBody = jsonData
+                print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
+            } catch {
+                DispatchQueue.main.async {
+                    completionHandler(false, error)
+                    return
+                }
+            }
+            
+            // Create and run a URLSession data task with our JSON encoded POST request
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { (responseData, response, responseError) in
+                print("Server Error: " + responseError.debugDescription)
+                    guard responseError == nil else {
+                        DispatchQueue.main.async {
+                            completionHandler(false, responseError)
+                        }
+                        return
+                    }
+                
+                // APIs usually respond with the data you just sent in your POST request
+                if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8) {
+                    print("response: ", utf8Representation)
+                    if utf8Representation.contains("Saving place failed") {
+                        DispatchQueue.main.async {
+                            completionHandler(false, NetworkControllerError.invalidURL(utf8Representation))
+                        }
+                        return
+                    }
+                } else {
+                    print("no readable data received in response")
+                }
+                DispatchQueue.main.async {
+                    completionHandler(true, nil)
+                }
+            }
+            task.resume()
+        }
+    }
+    
     
     func registerNewUser(userCred: User?, completionHandler: @escaping (Bool, Error?) -> Void) {
-        let endpoint = "http://localhost:3012/addUser"
+        let endpoint = "http://macbook-pro-bogdan.local:3012/addUser"
         let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-       
+        
         guard let endpointURL = URL(string: safeURLString!) else {
             completionHandler(false, NetworkControllerError.invalidURL(safeURLString!))
             return
         }
-         //Specify this request as being a POST method
+        //Specify this request as being a POST method
         var request = URLRequest(url: endpointURL)
         request.httpMethod = "POST"
         // Make sure that we include headers specifying that our request's HTTP body
@@ -52,7 +116,7 @@ final class OpenServerNetworkController: NetworkController {
             // APIs usually respond with the data you just sent in your POST request
             if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8) {
                 print("response: ", utf8Representation)
-                if utf8Representation.contains("Saving first user failed") {
+                if utf8Representation.contains("Saving user failed") {
                     completionHandler(false, NetworkControllerError.invalidURL(utf8Representation))
                     return
                 }
@@ -70,7 +134,7 @@ final class OpenServerNetworkController: NetworkController {
             return
         }
         
-        let endpoint = "http://localhost:3012/login"
+        let endpoint = "http://macbook-pro-bogdan.local:3012/login"
         var res = "";
         let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         

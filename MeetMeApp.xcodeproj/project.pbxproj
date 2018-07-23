@@ -25,6 +25,9 @@
 		CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0443D20EFED88002F2F87 /* MapViewController.swift */; };
 		CDA0444120EFF120002F2F87 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0444020EFF120002F2F87 /* MapController.swift */; };
 		CDB92B1620FBBF91005162B5 /* StatusLabelDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB92B1520FBBF91005162B5 /* StatusLabelDesignable.swift */; };
+		CDBB36F92104C8B100EA090E /* MeetMeApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBB36F82104C8B100EA090E /* MeetMeApp.storyboard */; };
+		CDBB36FF2104F5B100EA090E /* CreateMeetingSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB36FE2104F5B100EA090E /* CreateMeetingSpaceViewController.swift */; };
+		CDBB370321051F6B00EA090E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB370221051F6B00EA090E /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		CDA0443D20EFED88002F2F87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CDA0444020EFF120002F2F87 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		CDB92B1520FBBF91005162B5 /* StatusLabelDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusLabelDesignable.swift; sourceTree = "<group>"; };
+		CDBB36F82104C8B100EA090E /* MeetMeApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetMeApp.storyboard; sourceTree = "<group>"; };
+		CDBB36FE2104F5B100EA090E /* CreateMeetingSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingSpaceViewController.swift; sourceTree = "<group>"; };
+		CDBB370221051F6B00EA090E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,16 +100,13 @@
 				CDB92B1220FB8E45005162B5 /* UI */,
 				CDA0443F20EFF101002F2F87 /* Map */,
 				CD3FCD4120E5514C0050C682 /* Networking */,
+				CDBB36FB2104C8F000EA090E /* Storyboards */,
+				CDBB36FA2104C8C500EA090E /* Views */,
 				CD3FCD2D20E53BF00050C682 /* AppDelegate.swift */,
-				CD3FCD3120E53BF00050C682 /* Main.storyboard */,
 				CD3FCD3420E53BF20050C682 /* Assets.xcassets */,
-				CD3FCD3620E53BF20050C682 /* LaunchScreen.storyboard */,
 				CD3FCD3920E53BF20050C682 /* Info.plist */,
-				CD3FCD3F20E540040050C682 /* RegistrationViewController.swift */,
 				CD3FCD4620E561190050C682 /* User.swift */,
-				CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */,
-				CDA0443D20EFED88002F2F87 /* MapViewController.swift */,
-				CD210A7320FEC80700C37568 /* MainMenuViewController.swift */,
+				CDBB370221051F6B00EA090E /* Place.swift */,
 			);
 			path = MeetMeApp;
 			sourceTree = "<group>";
@@ -142,6 +145,28 @@
 				CD210A6E20FE8D6700C37568 /* ButtonDesignable.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		CDBB36FA2104C8C500EA090E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD3FCD3F20E540040050C682 /* RegistrationViewController.swift */,
+				CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */,
+				CDA0443D20EFED88002F2F87 /* MapViewController.swift */,
+				CD210A7320FEC80700C37568 /* MainMenuViewController.swift */,
+				CDBB36FE2104F5B100EA090E /* CreateMeetingSpaceViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CDBB36FB2104C8F000EA090E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CDBB36F82104C8B100EA090E /* MeetMeApp.storyboard */,
+				CD3FCD3120E53BF00050C682 /* Main.storyboard */,
+				CD3FCD3620E53BF20050C682 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD3FCD3820E53BF20050C682 /* LaunchScreen.storyboard in Resources */,
+				CDBB36F92104C8B100EA090E /* MeetMeApp.storyboard in Resources */,
 				CD3FCD3520E53BF20050C682 /* Assets.xcassets in Resources */,
 				CD3FCD3320E53BF00050C682 /* Main.storyboard in Resources */,
 			);
@@ -229,7 +255,9 @@
 				CD3FCD4720E561190050C682 /* User.swift in Sources */,
 				CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */,
 				CD210A6B20FE84FB00C37568 /* ViewDesignable.swift in Sources */,
+				CDBB36FF2104F5B100EA090E /* CreateMeetingSpaceViewController.swift in Sources */,
 				CD210A6F20FE8D6700C37568 /* ButtonDesignable.swift in Sources */,
+				CDBB370321051F6B00EA090E /* Place.swift in Sources */,
 				CD3FCD2E20E53BF00050C682 /* AppDelegate.swift in Sources */,
 				CDA0444120EFF120002F2F87 /* MapController.swift in Sources */,
 				CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */,
@@ -387,7 +415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uclan.MeetMeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -405,7 +433,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uclan.MeetMeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -11,6 +11,8 @@ import Foundation
 public protocol NetworkController {
     func registerNewUser(userCred: User?, completionHandler: @escaping(Bool, Error?) -> Void)
     func loginUser(userCred: User?, completionHandler: @escaping(Bool, String, Error?) -> Void)
+    
+    func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping(Bool, Error?) -> Void)
 }
 
 //Errors that may occur during networking processes
