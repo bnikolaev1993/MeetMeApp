@@ -43,6 +43,8 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
+        
         privacyPicker.delegate = self
         privacyPicker.dataSource = self
         

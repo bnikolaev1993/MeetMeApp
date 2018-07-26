@@ -20,6 +20,9 @@
 		CD3FCD4320E5516A0050C682 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4220E5516A0050C682 /* NetworkController.swift */; };
 		CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */; };
 		CD3FCD4720E561190050C682 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4620E561190050C682 /* User.swift */; };
+		CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD558B36210576C500D3C91E /* HideKeyboard.swift */; };
+		CD5B233B210A46B20008A5A5 /* OpenServerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */; };
+		CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233C210A46ED0008A5A5 /* UserTest.swift */; };
 		CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */; };
 		CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0443B20EFEBDA002F2F87 /* MapKit.framework */; };
 		CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0443D20EFED88002F2F87 /* MapViewController.swift */; };
@@ -29,6 +32,16 @@
 		CDBB36FF2104F5B100EA090E /* CreateMeetingSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB36FE2104F5B100EA090E /* CreateMeetingSpaceViewController.swift */; };
 		CDBB370321051F6B00EA090E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB370221051F6B00EA090E /* Place.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD5B2334210A46540008A5A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD3FCD2220E53BF00050C682 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD3FCD2920E53BF00050C682;
+			remoteInfo = MeetMeApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CD210A6A20FE84FB00C37568 /* ViewDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDesignable.swift; sourceTree = "<group>"; };
@@ -46,6 +59,11 @@
 		CD3FCD4220E5516A0050C682 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerNetworkController.swift; sourceTree = "<group>"; };
 		CD3FCD4620E561190050C682 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CD558B36210576C500D3C91E /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
+		CD5B232F210A46540008A5A5 /* MeetMeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetMeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5B2333210A46540008A5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerControllerTest.swift; sourceTree = "<group>"; };
+		CD5B233C210A46ED0008A5A5 /* UserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
 		CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDA0443B20EFEBDA002F2F87 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CDA0443D20EFED88002F2F87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +83,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD5B232C210A46540008A5A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				CD3FCD2C20E53BF00050C682 /* MeetMeApp */,
+				CD5B2330210A46540008A5A5 /* MeetMeAppTests */,
 				CD3FCD2B20E53BF00050C682 /* Products */,
 				CDA0443A20EFEBDA002F2F87 /* Frameworks */,
 			);
@@ -89,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				CD3FCD2A20E53BF00050C682 /* MeetMeApp.app */,
+				CD5B232F210A46540008A5A5 /* MeetMeAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +147,24 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		CD5B2330210A46540008A5A5 /* MeetMeAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD5B2339210A467D0008A5A5 /* NetworkingTests */,
+				CD5B2333210A46540008A5A5 /* Info.plist */,
+				CD5B233C210A46ED0008A5A5 /* UserTest.swift */,
+			);
+			path = MeetMeAppTests;
+			sourceTree = "<group>";
+		};
+		CD5B2339210A467D0008A5A5 /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */,
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
 		CDA0443A20EFEBDA002F2F87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +188,7 @@
 				CD210A6A20FE84FB00C37568 /* ViewDesignable.swift */,
 				CD210A6C20FE8B5A00C37568 /* UITextFieldDesignable.swift */,
 				CD210A6E20FE8D6700C37568 /* ButtonDesignable.swift */,
+				CD558B36210576C500D3C91E /* HideKeyboard.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -189,6 +235,24 @@
 			productReference = CD3FCD2A20E53BF00050C682 /* MeetMeApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CD5B232E210A46540008A5A5 /* MeetMeAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD5B2338210A46540008A5A5 /* Build configuration list for PBXNativeTarget "MeetMeAppTests" */;
+			buildPhases = (
+				CD5B232B210A46540008A5A5 /* Sources */,
+				CD5B232C210A46540008A5A5 /* Frameworks */,
+				CD5B232D210A46540008A5A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD5B2335210A46540008A5A5 /* PBXTargetDependency */,
+			);
+			name = MeetMeAppTests;
+			productName = MeetMeAppTests;
+			productReference = CD5B232F210A46540008A5A5 /* MeetMeAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,6 +271,11 @@
 							};
 						};
 					};
+					CD5B232E210A46540008A5A5 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+						TestTargetID = CD3FCD2920E53BF00050C682;
+					};
 				};
 			};
 			buildConfigurationList = CD3FCD2520E53BF00050C682 /* Build configuration list for PBXProject "MeetMeApp" */;
@@ -223,6 +292,7 @@
 			projectRoot = "";
 			targets = (
 				CD3FCD2920E53BF00050C682 /* MeetMeApp */,
+				CD5B232E210A46540008A5A5 /* MeetMeAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +306,13 @@
 				CDBB36F92104C8B100EA090E /* MeetMeApp.storyboard in Resources */,
 				CD3FCD3520E53BF20050C682 /* Assets.xcassets in Resources */,
 				CD3FCD3320E53BF00050C682 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD5B232D210A46540008A5A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +331,7 @@
 				CD3FCD4020E540040050C682 /* RegistrationViewController.swift in Sources */,
 				CD3FCD4720E561190050C682 /* User.swift in Sources */,
 				CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */,
+				CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */,
 				CD210A6B20FE84FB00C37568 /* ViewDesignable.swift in Sources */,
 				CDBB36FF2104F5B100EA090E /* CreateMeetingSpaceViewController.swift in Sources */,
 				CD210A6F20FE8D6700C37568 /* ButtonDesignable.swift in Sources */,
@@ -265,7 +343,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD5B232B210A46540008A5A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */,
+				CD5B233B210A46B20008A5A5 /* OpenServerControllerTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD5B2335210A46540008A5A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD3FCD2920E53BF00050C682 /* MeetMeApp */;
+			targetProxy = CD5B2334210A46540008A5A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CD3FCD3120E53BF00050C682 /* Main.storyboard */ = {
@@ -437,6 +532,49 @@
 			};
 			name = Release;
 		};
+		CD5B2336210A46540008A5A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9M646C2A7;
+				INFOPLIST_FILE = MeetMeAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uclan.MeetMeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetMeApp.app/MeetMeApp";
+			};
+			name = Debug;
+		};
+		CD5B2337210A46540008A5A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9M646C2A7;
+				INFOPLIST_FILE = MeetMeAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uclan.MeetMeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetMeApp.app/MeetMeApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -454,6 +592,15 @@
 			buildConfigurations = (
 				CD3FCD3D20E53BF20050C682 /* Debug */,
 				CD3FCD3E20E53BF20050C682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD5B2338210A46540008A5A5 /* Build configuration list for PBXNativeTarget "MeetMeAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD5B2336210A46540008A5A5 /* Debug */,
+				CD5B2337210A46540008A5A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

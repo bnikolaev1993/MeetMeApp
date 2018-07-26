@@ -51,6 +51,7 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showDatePicker()
+        self.hideKeyboardWhenTappedAround() 
     }
     
     func showDatePicker(){
