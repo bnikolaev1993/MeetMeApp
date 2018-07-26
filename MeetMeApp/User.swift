@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Sodium
 
 public class User: Codable {
     var username: String
@@ -38,5 +39,13 @@ public class User: Codable {
         else {
             return false
         }
+    }
+    
+    public func hashPassword() {
+        let sodium = Sodium()
+        let hashedStr = sodium.pwHash.str(passwd: self.password.bytes,
+                                                 opsLimit: sodium.pwHash.OpsLimitInteractive,
+                                                 memLimit: sodium.pwHash.MemLimitInteractive)!
+        self.password = hashedStr
     }
 }

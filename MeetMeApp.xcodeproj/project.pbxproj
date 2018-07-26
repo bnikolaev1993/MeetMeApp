@@ -23,6 +23,7 @@
 		CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD558B36210576C500D3C91E /* HideKeyboard.swift */; };
 		CD5B233B210A46B20008A5A5 /* OpenServerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */; };
 		CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233C210A46ED0008A5A5 /* UserTest.swift */; };
+		CD5B2350210A4DBF0008A5A5 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5B2347210A4D970008A5A5 /* Sodium.framework */; };
 		CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */; };
 		CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0443B20EFEBDA002F2F87 /* MapKit.framework */; };
 		CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0443D20EFED88002F2F87 /* MapViewController.swift */; };
@@ -40,6 +41,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = CD3FCD2920E53BF00050C682;
 			remoteInfo = MeetMeApp;
+		};
+		CD5B2346210A4D970008A5A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09A943C71A4EB5F500C8A04F;
+			remoteInfo = Sodium_iOS;
+		};
+		CD5B2348210A4D970008A5A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09A943D21A4EB5F500C8A04F;
+			remoteInfo = SodiumTests;
+		};
+		CD5B234A210A4D970008A5A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 90C75E941AE3571900F1E749;
+			remoteInfo = Sodium_OSX;
+		};
+		CD5B234C210A4D970008A5A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 901644B61AE36EA700163E3E;
+			remoteInfo = "Example iOS";
+		};
+		CD5B234E210A4D970008A5A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 901644DC1AE36F2D00163E3E;
+			remoteInfo = "Example OSX";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -64,6 +100,7 @@
 		CD5B2333210A46540008A5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerControllerTest.swift; sourceTree = "<group>"; };
 		CD5B233C210A46ED0008A5A5 /* UserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
+		CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = "../../../Documents/SWIFT/swift-sodium/Sodium.xcodeproj"; sourceTree = "<group>"; };
 		CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDA0443B20EFEBDA002F2F87 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CDA0443D20EFED88002F2F87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD5B2350210A4DBF0008A5A5 /* Sodium.framework in Frameworks */,
 				CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,9 +203,22 @@
 			path = NetworkingTests;
 			sourceTree = "<group>";
 		};
+		CD5B233F210A4D970008A5A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD5B2347210A4D970008A5A5 /* Sodium.framework */,
+				CD5B2349210A4D970008A5A5 /* SodiumTests.xctest */,
+				CD5B234B210A4D970008A5A5 /* Sodium.framework */,
+				CD5B234D210A4D970008A5A5 /* Example iOS.app */,
+				CD5B234F210A4D970008A5A5 /* Example OSX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CDA0443A20EFEBDA002F2F87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */,
 				CDA0443B20EFEBDA002F2F87 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -289,6 +340,12 @@
 			mainGroup = CD3FCD2120E53BF00050C682;
 			productRefGroup = CD3FCD2B20E53BF00050C682 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CD5B233F210A4D970008A5A5 /* Products */;
+					ProjectRef = CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CD3FCD2920E53BF00050C682 /* MeetMeApp */,
@@ -296,6 +353,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CD5B2347210A4D970008A5A5 /* Sodium.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sodium.framework;
+			remoteRef = CD5B2346210A4D970008A5A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CD5B2349210A4D970008A5A5 /* SodiumTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SodiumTests.xctest;
+			remoteRef = CD5B2348210A4D970008A5A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CD5B234B210A4D970008A5A5 /* Sodium.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sodium.framework;
+			remoteRef = CD5B234A210A4D970008A5A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CD5B234D210A4D970008A5A5 /* Example iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Example iOS.app";
+			remoteRef = CD5B234C210A4D970008A5A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CD5B234F210A4D970008A5A5 /* Example OSX.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Example OSX.app";
+			remoteRef = CD5B234E210A4D970008A5A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CD3FCD2820E53BF00050C682 /* Resources */ = {
@@ -439,6 +534,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -492,6 +588,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
