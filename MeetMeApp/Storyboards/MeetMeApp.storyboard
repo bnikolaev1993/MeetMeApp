@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map-->
+        <scene sceneID="4ny-Vn-u62">
+            <objects>
+                <viewController storyboardIdentifier="mapVC" id="oWy-kG-HE0" customClass="MapViewController" customModule="MeetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cvd-GV-ANK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBx-Dc-rhc" customClass="MapController" customModule="MeetMeApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ZrT-eg-tvr" appends="YES" id="SO5-kd-HNt"/>
+                                </connections>
+                            </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trackOffIcon" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-xI-zZN">
+                                <rect key="frame" x="303" y="542" width="62" height="56"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEs-o3-fHu" customClass="StatusLableDesignable" customModule="MeetMeApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="30" width="355" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="45Z-mp-8Ut"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBS-mg-dNk">
+                                <rect key="frame" x="303" y="542" width="62" height="56"/>
+                                <connections>
+                                    <action selector="enableTrackingBtn:" destination="oWy-kG-HE0" eventType="touchUpInside" id="H9s-RI-cNb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88235294119999996" green="0.93333333330000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OgX-8q-vUP" firstAttribute="trailing" secondItem="D8I-xI-zZN" secondAttribute="trailing" constant="10" id="1jo-pi-Mzg"/>
+                            <constraint firstItem="IEs-o3-fHu" firstAttribute="leading" secondItem="OgX-8q-vUP" secondAttribute="leading" constant="10" id="Blm-YF-MP1"/>
+                            <constraint firstItem="iBx-Dc-rhc" firstAttribute="leading" secondItem="OgX-8q-vUP" secondAttribute="leading" id="FXC-eu-bHM"/>
+                            <constraint firstItem="HBS-mg-dNk" firstAttribute="width" secondItem="D8I-xI-zZN" secondAttribute="width" id="QE9-iF-Uv8"/>
+                            <constraint firstItem="HBS-mg-dNk" firstAttribute="height" secondItem="D8I-xI-zZN" secondAttribute="height" id="bal-lL-ImS"/>
+                            <constraint firstItem="D8I-xI-zZN" firstAttribute="leading" secondItem="OgX-8q-vUP" secondAttribute="leading" constant="303" id="bjg-iQ-Gak"/>
+                            <constraint firstItem="IEs-o3-fHu" firstAttribute="top" secondItem="OgX-8q-vUP" secondAttribute="top" constant="10" id="dgD-2e-9QZ"/>
+                            <constraint firstItem="HBS-mg-dNk" firstAttribute="leading" secondItem="D8I-xI-zZN" secondAttribute="leading" id="jFM-hM-h5X"/>
+                            <constraint firstItem="OgX-8q-vUP" firstAttribute="bottom" secondItem="D8I-xI-zZN" secondAttribute="bottom" constant="20" id="mfJ-Yy-KUb"/>
+                            <constraint firstItem="HBS-mg-dNk" firstAttribute="top" secondItem="D8I-xI-zZN" secondAttribute="top" id="pvt-cG-KIp"/>
+                            <constraint firstItem="OgX-8q-vUP" firstAttribute="trailing" secondItem="IEs-o3-fHu" secondAttribute="trailing" constant="10" id="tLB-Vb-7uk"/>
+                            <constraint firstItem="iBx-Dc-rhc" firstAttribute="top" secondItem="cvd-GV-ANK" secondAttribute="top" id="wg6-Bs-eJR"/>
+                            <constraint firstItem="OgX-8q-vUP" firstAttribute="bottom" secondItem="iBx-Dc-rhc" secondAttribute="bottom" id="xe5-0K-qcX"/>
+                            <constraint firstItem="iBx-Dc-rhc" firstAttribute="trailing" secondItem="OgX-8q-vUP" secondAttribute="trailing" id="yfN-Jk-ElO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OgX-8q-vUP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapBarIcon" id="iDH-5D-yB1">
+                        <color key="badgeColor" red="0.88235294119999996" green="0.93333333330000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="map" destination="iBx-Dc-rhc" id="RX2-he-ZtA"/>
+                        <outlet property="statusLabel" destination="IEs-o3-fHu" id="oWF-ug-IyZ"/>
+                        <outlet property="trackOutlet" destination="D8I-xI-zZN" id="SlF-xg-T7Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ibp-bP-W2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ZrT-eg-tvr">
+                    <connections>
+                        <action selector="mapTapGesture:" destination="oWy-kG-HE0" id="o4u-mT-ZIN"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-63.200000000000003" y="805.54722638680664"/>
+        </scene>
+        <!--Create Meeting Space View Controller-->
+        <scene sceneID="g6j-OX-Jzw">
+            <objects>
+                <viewController storyboardIdentifier="createMSPopUpVC" id="wKE-nW-kOt" customClass="CreateMeetingSpaceViewController" customModule="MeetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ba-KE-FEq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNB-pg-yJ4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <action selector="closeBtn:" destination="wKE-nW-kOt" eventType="touchUpInside" id="slB-W7-fhk"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxf-EU-ML7" customClass="ViewDesignable" customModule="MeetMeApp" customModuleProvider="target">
+                                <rect key="frame" x="67" y="175" width="240" height="370"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Meeting Space" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hYw-gT-nfu">
+                                        <rect key="frame" x="8" y="8" width="224" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uAY-q7-Tmz">
+                                        <rect key="frame" x="10" y="42" width="220" height="308"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QPO-1p-x1l">
+                                                <rect key="frame" x="0.0" y="0.0" width="220" height="35.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="e2U-Xv-IOr">
+                                                <rect key="frame" x="0.0" y="45.5" width="220" height="35.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Label">
+                                                        <attributes>
+                                                            <font key="NSFont" size="18" name="AmericanTypewriter"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Space Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-pt-45a">
+                                                <rect key="frame" x="0.0" y="91" width="220" height="35.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Meeting Space Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FtC-Bc-bzm">
+                                                <rect key="frame" x="0.0" y="136.5" width="220" height="35"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCD-c6-ZP1">
+                                                <rect key="frame" x="0.0" y="181.5" width="220" height="35.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Privacy Status" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2G2-kZ-v0q">
+                                                <rect key="frame" x="0.0" y="227" width="220" height="35.5"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKo-pH-28g" customClass="ButtonDesignable" customModule="MeetMeApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="272.5" width="220" height="35.5"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Create">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="createMSBtn:" destination="wKE-nW-kOt" eventType="touchUpInside" id="Ozo-vy-vbi"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.88235294119999996" green="0.93333333330000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hYw-gT-nfu" secondAttribute="trailing" constant="8" id="DDz-pK-kTf"/>
+                                    <constraint firstItem="hYw-gT-nfu" firstAttribute="leading" secondItem="xxf-EU-ML7" secondAttribute="leading" constant="8" id="GYS-ej-ih5"/>
+                                    <constraint firstItem="uAY-q7-Tmz" firstAttribute="leading" secondItem="xxf-EU-ML7" secondAttribute="leading" constant="10" id="LXw-qC-OBF"/>
+                                    <constraint firstAttribute="trailing" secondItem="uAY-q7-Tmz" secondAttribute="trailing" constant="10" id="Np4-qZ-vMM"/>
+                                    <constraint firstAttribute="bottom" secondItem="uAY-q7-Tmz" secondAttribute="bottom" constant="20" id="fPC-y3-SWJ"/>
+                                    <constraint firstItem="uAY-q7-Tmz" firstAttribute="top" secondItem="hYw-gT-nfu" secondAttribute="bottom" constant="10" id="otx-Dc-Ayi"/>
+                                    <constraint firstItem="hYw-gT-nfu" firstAttribute="top" secondItem="xxf-EU-ML7" secondAttribute="top" constant="8" id="uBa-Tb-zKl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doShadowBox" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="TGn-Yo-qYN" customClass="StatusLableDesignable" customModule="MeetMeApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="70" width="355" height="50"/>
+                                <color key="backgroundColor" red="0.7621748096446701" green="0.0" blue="0.056967562194267136" alpha="0.70034246575342463" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NDG-If-XzY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="borderRadius" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xxf-EU-ML7" firstAttribute="centerX" secondItem="6ba-KE-FEq" secondAttribute="centerX" id="0rb-do-H8u"/>
+                            <constraint firstItem="xxf-EU-ML7" firstAttribute="centerY" secondItem="PNB-pg-yJ4" secondAttribute="centerY" constant="26.5" id="GlO-hF-NeV"/>
+                            <constraint firstItem="xxf-EU-ML7" firstAttribute="centerX" secondItem="PNB-pg-yJ4" secondAttribute="centerX" id="HCx-yE-o4N"/>
+                            <constraint firstItem="PNB-pg-yJ4" firstAttribute="trailing" secondItem="xGv-RE-oSe" secondAttribute="trailing" id="IW9-mj-wmw"/>
+                            <constraint firstItem="TGn-Yo-qYN" firstAttribute="leading" secondItem="xGv-RE-oSe" secondAttribute="leading" constant="10" id="Ofu-Bm-BWt"/>
+                            <constraint firstItem="PNB-pg-yJ4" firstAttribute="bottom" secondItem="xGv-RE-oSe" secondAttribute="bottom" id="PwX-1Q-P8c"/>
+                            <constraint firstItem="xGv-RE-oSe" firstAttribute="trailing" secondItem="TGn-Yo-qYN" secondAttribute="trailing" constant="10" id="U1w-cS-fde"/>
+                            <constraint firstItem="xxf-EU-ML7" firstAttribute="centerY" secondItem="6ba-KE-FEq" secondAttribute="centerY" constant="26.5" id="YAK-8G-9FU"/>
+                            <constraint firstItem="xxf-EU-ML7" firstAttribute="top" secondItem="TGn-Yo-qYN" secondAttribute="bottom" constant="55" id="Z8r-AO-EeI"/>
+                            <constraint firstItem="xxf-EU-ML7" firstAttribute="leading" secondItem="xGv-RE-oSe" secondAttribute="leading" constant="67" id="nws-Ob-iXk"/>
+                            <constraint firstItem="PNB-pg-yJ4" firstAttribute="top" secondItem="6ba-KE-FEq" secondAttribute="top" id="pf9-qw-1Qt"/>
+                            <constraint firstItem="TGn-Yo-qYN" firstAttribute="top" secondItem="xGv-RE-oSe" secondAttribute="top" constant="50" id="qVD-VE-WdF"/>
+                            <constraint firstItem="PNB-pg-yJ4" firstAttribute="leading" secondItem="xGv-RE-oSe" secondAttribute="leading" id="t8E-A0-SUm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xGv-RE-oSe"/>
+                    </view>
+                    <connections>
+                        <outlet property="meetingSpaceNameTF" destination="FtC-Bc-bzm" id="YTd-RL-P5m"/>
+                        <outlet property="privacyPickerText" destination="2G2-kZ-v0q" id="qHe-Yr-riY"/>
+                        <outlet property="statusLabelOutlet" destination="TGn-Yo-qYN" id="U4v-Yu-OmG"/>
+                        <outlet property="streetLabel" destination="e2U-Xv-IOr" id="vYO-dX-m34"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pPB-12-Zr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706.39999999999998" y="970.16491754122944"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="h6E-WH-Zdh">
+            <objects>
+                <viewController id="2fL-LR-2R5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dxa-EU-Els">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="949-Gs-G0v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="u2Q-Fx-jjY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="06h-vZ-gyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="323"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="4j9-tm-dST">
+            <objects>
+                <viewController id="0xy-4w-E7t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iza-sf-SEM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8OY-Jn-cZN"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="g2S-6g-2oN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nmG-c0-d7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="-343"/>
+        </scene>
+        <!--Meet Me App Tab Bar View Controller-->
+        <scene sceneID="erg-ge-Pn2">
+            <objects>
+                <tabBarController storyboardIdentifier="meetMeTabVC" id="hLh-B6-f52" customClass="MeetMeAppTabBarViewController" customModule="MeetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a3n-Hw-cPj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="0xy-4w-E7t" kind="relationship" relationship="viewControllers" id="I8O-tR-Jfv"/>
+                        <segue destination="oWy-kG-HE0" kind="relationship" relationship="viewControllers" id="dHg-7R-NRH"/>
+                        <segue destination="2fL-LR-2R5" kind="relationship" relationship="viewControllers" id="zXw-1w-lfb"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RvD-Dx-HjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-62" y="-10"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mapBarIcon" width="25" height="25"/>
+        <image name="trackOffIcon" width="56" height="56"/>
+    </resources>
+</document>
