@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import MapKit
 
 protocol StatusSenderProtocol: AnyObject{
     func sendStatus(status: String)
     func isLogin(status: Bool)
+}
+
+protocol CoordsSenderProtocol: AnyObject {
+    func coordsRecieved(_ status: Bool, _ statusSring: String, _ coords: CLPlacemark?)
 }

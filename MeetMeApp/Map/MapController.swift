@@ -9,19 +9,22 @@
 import UIKit
 import MapKit
 
-class MapController: MKMapView, CLLocationManagerDelegate {
+class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
-    var coordinate2D = CLLocationCoordinate2DMake(53.7702356, -2.7671912)
+    var coordinate2D: CLLocationCoordinate2D?
+    var isAnnotationSelected = false
     
     func setupCoreLocation() {
+        self.delegate = self
         locationManager.delegate = self
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
             break
         case .authorizedAlways:
-            enableLocationServices()
+            coordinate2D = locationManager.location?.coordinate
+            updateMapRegion(rangeSpan: 200)
         default:
             break
         }
@@ -31,7 +34,6 @@ class MapController: MKMapView, CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
             setUserTrackingMode(.follow, animated: true)
-            locationManager.stopUpdatingLocation()
         }
     }
     
@@ -40,7 +42,7 @@ class MapController: MKMapView, CLLocationManagerDelegate {
     }
     
     func updateMapRegion(rangeSpan: CLLocationDistance) {
-        region = MKCoordinateRegionMakeWithDistance(coordinate2D, rangeSpan, rangeSpan)
+        region = MKCoordinateRegionMakeWithDistance(coordinate2D!, rangeSpan, rangeSpan)
     }
     
     func lookUpCurrentLocation(coords: CLLocationCoordinate2D, completionHandler: @escaping (CLPlacemark?)
@@ -60,6 +62,16 @@ class MapController: MKMapView, CLLocationManagerDelegate {
         })
     }
     
+    func addMeetingSpaceOverlay(radius: Double) {
+        for location in self.annotations {
+            if location.coordinate != (locationManager.location?.coordinate)! {
+                let circle = MKCircle(center: location.coordinate, radius: radius)
+                self.add(circle)
+            }
+        }
+    }
+    
+    //MARK: Location Manager Delegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways:
@@ -77,5 +89,43 @@ class MapController: MKMapView, CLLocationManagerDelegate {
         //let displayLocation = "\(location.timestamp) Coord: \(coordinate2D) Alt: \(location.altitude) meters"
         //print(displayLocation)
         updateMapRegion(rangeSpan: 200)
+    }
+    
+    //MARK: MapKit Delegate
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = MKAnnotationView()
+        guard let annotation = annotation as? MeetingSpaceAnnotation else {
+            return nil
+        }
+        if let dequedView = self.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
+            annotationView = dequedView
+        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
+        }
+        annotationView.canShowCallout = true
+        annotationView.image = #imageLiteral(resourceName: "pin")
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view:  MKAnnotationView) {
+        isAnnotationSelected = true
+        print("Tapped on Annotation")
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let circle = overlay as? MKCircle {
+            let circleRenderer = MKCircleRenderer(circle: circle)
+            circleRenderer.fillColor = UIColor(red: 0.0, green: 0.1, blue: 1.0, alpha: 0.1)
+            circleRenderer.strokeColor = UIColor.blue
+            circleRenderer.lineWidth = 1.0
+            return circleRenderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+}
+
+extension CLLocationCoordinate2D {
+    static func != (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude != rhs.latitude && lhs.longitude != rhs.longitude ? true : false
     }
 }

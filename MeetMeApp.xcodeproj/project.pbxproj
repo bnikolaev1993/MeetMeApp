@@ -20,6 +20,7 @@
 		CD3FCD4320E5516A0050C682 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4220E5516A0050C682 /* NetworkController.swift */; };
 		CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */; };
 		CD3FCD4720E561190050C682 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4620E561190050C682 /* User.swift */; };
+		CD41AB46210F96FB00B4A605 /* MeetingSpaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41AB45210F96FB00B4A605 /* MeetingSpaceAnnotation.swift */; };
 		CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD558B36210576C500D3C91E /* HideKeyboard.swift */; };
 		CD5B233B210A46B20008A5A5 /* OpenServerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */; };
 		CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233C210A46ED0008A5A5 /* UserTest.swift */; };
@@ -95,6 +96,7 @@
 		CD3FCD4220E5516A0050C682 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerNetworkController.swift; sourceTree = "<group>"; };
 		CD3FCD4620E561190050C682 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CD41AB45210F96FB00B4A605 /* MeetingSpaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingSpaceAnnotation.swift; sourceTree = "<group>"; };
 		CD558B36210576C500D3C91E /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		CD5B232F210A46540008A5A5 /* MeetMeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetMeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5B2333210A46540008A5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA0444020EFF120002F2F87 /* MapController.swift */,
+				CD41AB45210F96FB00B4A605 /* MeetingSpaceAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				CD210A7420FEC80700C37568 /* MainMenuViewController.swift in Sources */,
 				CD3FCD4020E540040050C682 /* RegistrationViewController.swift in Sources */,
 				CD3FCD4720E561190050C682 /* User.swift in Sources */,
+				CD41AB46210F96FB00B4A605 /* MeetingSpaceAnnotation.swift in Sources */,
 				CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */,
 				CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */,
 				CD210A6B20FE84FB00C37568 /* ViewDesignable.swift in Sources */,

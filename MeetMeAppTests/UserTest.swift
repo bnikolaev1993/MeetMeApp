@@ -40,6 +40,7 @@ class UserTest: XCTestCase {
     
     func testUserHashPassword() {
         userLog.hashPassword()
+        print(userLog.password)
         XCTAssertNotEqual(userLog.password, "q", "Password hasn't been hashed")
         let sodium = Sodium()
         let isHashed = sodium.pwHash.strVerify(hash: userLog.password, passwd: "q".bytes)

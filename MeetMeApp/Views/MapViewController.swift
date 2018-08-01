@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
     
@@ -34,39 +35,52 @@ class MapViewController: UIViewController {
         }
     }
     
-    @IBAction func mapTapGesture(_ sender: UITapGestureRecognizer) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        map.setupCoreLocation()
+        // or for swift 2 +
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.addMS (_:)))
+        self.map.addGestureRecognizer(gesture)
+        //self.view.addGestureRecognizer(gesture)
+        // Do any additional setup after loading the view.
+    }
+    
+    @objc func addMS(_ sender:UITapGestureRecognizer){
+        print("1")
         if sender.state == .ended {
             let locationInView = sender.location(in: map)
             let locationInCoords = map.convert(locationInView, toCoordinateFrom: map)
             //print("You tapped on coordinate: \(locationInCoords)")
-            map.lookUpCurrentLocation(coords: locationInCoords) { (placemark) in
-                if placemark != nil {
-                    print("Placemark name: ", placemark?.name ?? "nil")
-                    print("Thoroughfare name: ", placemark?.thoroughfare ?? "nil")
-                    print("Sub-Thoroughfare name: ", placemark?.subThoroughfare ?? "nil")
-                    print("Country name: ", placemark?.country ?? "nil")
-                    let sb = UIStoryboard(name: "MeetMeApp", bundle: nil)
-                    let createMSPopUp = sb.instantiateViewController(withIdentifier: "createMSPopUpVC") as? CreateMeetingSpaceViewController
-                    createMSPopUp?.state = placemark!
-                    createMSPopUp?.delegate = self
-                    createMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                    createMSPopUp?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                    self.present(createMSPopUp!, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if !self.map.isAnnotationSelected {
+                    self.map.lookUpCurrentLocation(coords: locationInCoords) { (placemark) in
+                        if placemark != nil {
+                            print("Placemark name: ", placemark?.name ?? "nil")
+                            print("Thoroughfare name: ", placemark?.thoroughfare ?? "nil")
+                            print("Sub-Thoroughfare name: ", placemark?.subThoroughfare ?? "nil")
+                            print("Country name: ", placemark?.country ?? "nil")
+                            let sb = UIStoryboard(name: "MeetMeApp", bundle: nil)
+                            let createMSPopUp = sb.instantiateViewController(withIdentifier: "createMSPopUpVC") as? CreateMeetingSpaceViewController
+                            createMSPopUp?.state = placemark!
+                            createMSPopUp?.delegate = self
+                            createMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                            createMSPopUp?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                            self.present(createMSPopUp!, animated: true)
+                        }
+                    }
                 }
+                self.map.isAnnotationSelected = false
             }
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        map.setupCoreLocation()
-        // Do any additional setup after loading the view.
-    }
 }
 
-extension MapViewController: StatusSenderProtocol {
-    func sendStatus(status: String) {
-        statusLabel.text = status
+extension MapViewController: CoordsSenderProtocol {
+    func coordsRecieved(_ status: Bool, _ statusString: String, _ coords: CLPlacemark?) {
+        let annotation = MeetingSpaceAnnotation((coords?.location?.coordinate)!, coords?.thoroughfare ?? "nil", coords?.name ?? "nil")
+        map.addAnnotation(annotation)
+        map.addMeetingSpaceOverlay(radius: 200)
+        statusLabel.text = statusString
         statusLabel.alpha = 1
         statusLabel.backgroundColor = UIColor.green.withAlphaComponent(0.4)
         
@@ -76,9 +90,5 @@ extension MapViewController: StatusSenderProtocol {
             self.statusLabel.alpha = 0
             //self.statusLabel.isHidden = true
         }, completion: nil)
-    }
-    
-    func isLogin(status: Bool) {
-        print("Place created!")
     }
 }

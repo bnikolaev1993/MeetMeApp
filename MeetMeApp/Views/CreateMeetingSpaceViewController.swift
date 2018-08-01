@@ -14,7 +14,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     var state: CLPlacemark?
     let privacyPicker = UIPickerView()
     let privacyPickerValues = ["Public", "Private"]
-    var delegate: StatusSenderProtocol?
+    var delegate: CoordsSenderProtocol?
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var meetingSpaceNameTF: UITextField!
     @IBOutlet weak var privacyPickerText: UITextField!
@@ -33,8 +33,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
                 }
             }
             if completed {
-                self.delegate?.isLogin(status: true)
-                self.delegate?.sendStatus(status: "Meeting Space Created Successfully!")
+                self.delegate?.coordsRecieved(true, "Meeting Space Created Successfully!", self.state)
                 self.dismiss(animated: true)
             }
         }

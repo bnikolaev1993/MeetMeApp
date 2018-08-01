@@ -21,9 +21,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBx-Dc-rhc" customClass="MapController" customModule="MeetMeApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ZrT-eg-tvr" appends="YES" id="SO5-kd-HNt"/>
-                                </connections>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trackOffIcon" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-xI-zZN">
                                 <rect key="frame" x="303" y="542" width="62" height="56"/>
@@ -81,11 +78,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibp-bP-W2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ZrT-eg-tvr">
-                    <connections>
-                        <action selector="mapTapGesture:" destination="oWy-kG-HE0" id="o4u-mT-ZIN"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-63.200000000000003" y="805.54722638680664"/>
         </scene>
