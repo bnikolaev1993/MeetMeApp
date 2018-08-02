@@ -17,18 +17,20 @@ public class Place: NSObject, Codable, MKAnnotation {
     let name: String
     let placemark: String
     let city: String
+    let placeDescription: String
     let privacy: String
     let latitude: Double
     let longitude: Double
     
     public var identifier = "meetingSpacePin"
     
-    init(_ id: Int, _ name: String, _ placemark: String, _ city: String, _ privacy: String, _ coordinate: CLLocationCoordinate2D) {
+    init(_ id: Int, _ name: String, _ placemark: String, _ city: String, _ description: String, _ privacy: String, _ coordinate: CLLocationCoordinate2D) {
         self.creatorID = id
         self.title = name
         self.subtitle = placemark
         self.name = name
         self.placemark = placemark
+        self.placeDescription = description
         self.privacy = privacy
         self.coordinate = coordinate
         self.longitude = coordinate.longitude
@@ -41,6 +43,7 @@ public class Place: NSObject, Codable, MKAnnotation {
         case name
         case placemark
         case city
+        case placeDescription = "description"
         case privacy
         case latitude = "lat"
         case longitude = "long"
@@ -52,6 +55,7 @@ public class Place: NSObject, Codable, MKAnnotation {
         name = try container.decode(String.self, forKey: .name)
         placemark = try container.decode(String.self, forKey: .placemark)
         city = try container.decode(String.self, forKey: .city)
+        placeDescription = try container.decode(String.self, forKey: .placeDescription)
         privacy = try container.decode(String.self, forKey: .privacy)
         latitude = try container.decode(Double.self, forKey: .latitude)
         longitude = try container.decode(Double.self, forKey: .longitude)

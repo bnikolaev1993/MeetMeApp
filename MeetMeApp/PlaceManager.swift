@@ -14,8 +14,12 @@ class PlaceManager: Codable {
     private var places: [Place]?
     
     func fetchPlaces (city: String) {
+        var cityInEnglish = city
+        if city == "Престон" {
+            cityInEnglish = "Preston"
+        }
         let server = OpenServerNetworkController()
-        server.fetchMeetingSpacesByCity(city: city) { (bool, data, error) in
+        server.fetchMeetingSpacesByCity(city: cityInEnglish) { (bool, data, error) in
             guard let places = try? JSONDecoder().decode([Place].self, from: data!) else {
                 print("Error: Couldn't decode data into Blog")
                 return

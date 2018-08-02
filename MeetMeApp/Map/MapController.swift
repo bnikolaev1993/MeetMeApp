@@ -14,6 +14,7 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     var coordinate2D: CLLocationCoordinate2D?
     var isAnnotationSelected = false
+    var tappedAnnotation: Place?
     private let rangeOfOverlay: Double = 200
     
     func getRange() -> Double {
@@ -33,8 +34,8 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
             locationManager.requestAlwaysAuthorization()
             break
         case .authorizedAlways, .authorizedWhenInUse:
-            enableLocationServices()
             getCurrentUserLocation()
+            enableLocationServices()
         default:
             break
         }
@@ -131,13 +132,15 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
         } else {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
         }
-        annotationView.canShowCallout = true
+        annotationView.canShowCallout = false
         annotationView.image = #imageLiteral(resourceName: "pin")
         return annotationView
     }
-    
+
     func mapView(_ mapView: MKMapView, didSelect view:  MKAnnotationView) {
         isAnnotationSelected = true
+        let place = view.annotation as? Place
+        tappedAnnotation = place!
         print("Tapped on Annotation")
     }
     

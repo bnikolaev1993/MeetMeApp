@@ -8,8 +8,9 @@
 import MapKit
 import UIKit
 
-class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
+    @IBOutlet weak var descriptionOutlet: UITextField!
     @IBOutlet weak var statusLabelOutlet: StatusLableDesignable!
     var state: CLPlacemark?
     let privacyPicker = UIPickerView()
@@ -24,7 +25,12 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     }
     @IBAction func createMSBtn(_ sender: ButtonDesignable) {
         //Change CreatorID to session variable
-        var place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, (state?.locality)!, privacyPickerText.text!,  (state?.location?.coordinate)!)
+        var cityName = state?.locality!
+        if (state?.locality)! == "Престон"
+        {
+            cityName = "Preston"
+        }
+        var place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, cityName!, descriptionOutlet.text!, privacyPickerText.text!,  (state?.location?.coordinate)!)
         let addPlace = OpenServerNetworkController()
         addPlace.createNewMeetingPlace(placeCred: place) { (completed, error) in
             if error != nil {
@@ -44,8 +50,8 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.hideKeyboardWhenTappedAround()
+        
         
         privacyPicker.delegate = self
         privacyPicker.dataSource = self
@@ -67,7 +73,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
         super.viewWillAppear(animated)
         
         if state != nil{
-            streetLabel.text = state?.thoroughfare
+            streetLabel.text = state?.name
         }
     }
     
@@ -90,6 +96,36 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         privacyPickerText.text = privacyPickerValues[row]
         self.view.endEditing(true)
+    }
+    
+    //MARK: TextFieldDelegate
+    
+    // Start Editing The Text Field
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: false)
+    }
+    
+    // Hide the keyboard when the return key pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Move the text field in a pretty animation!
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
     deinit {

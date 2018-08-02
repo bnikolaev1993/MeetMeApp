@@ -28,7 +28,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        map.setupCoreLocation()
         placeManager = PlaceManager()
         let loc = map.locationManager.location?.coordinate
         map.lookUpCurrentLocation(coords: loc!) { (placemark) in
@@ -36,13 +35,18 @@ class MapViewController: UIViewController {
                 self.placeManager.fetchPlaces(city: (placemark?.locality!)!)
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.map.addAnnotations(self.placeManager.getPlaces())
             self.map.addMeetingSpaceOverlay(radius: self.map.getRange())
             print("Annotations: ", self.map.annotations.count)
         }
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.addMS (_:)))
         self.map.addGestureRecognizer(gesture)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        map.setupCoreLocation()
     }
     
     @objc func addMS(_ sender:UITapGestureRecognizer){
@@ -69,6 +73,15 @@ class MapViewController: UIViewController {
                             self.present(createMSPopUp!, animated: true)
                         }
                     }
+                }
+                else {
+                    let place = self.map.tappedAnnotation!
+                    let sb = UIStoryboard(name: "MeetMeApp", bundle: nil)
+                    let showMSPopUp = sb.instantiateViewController(withIdentifier: "showMSPopUpVC") as? ShowMeetingSpaceViewController
+                    showMSPopUp?.place = place
+                    showMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                    showMSPopUp?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                    self.present(showMSPopUp!, animated: true)
                 }
                 self.map.isAnnotationSelected = false
             }
