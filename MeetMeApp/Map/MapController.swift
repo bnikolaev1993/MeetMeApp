@@ -14,6 +14,16 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     var coordinate2D: CLLocationCoordinate2D?
     var isAnnotationSelected = false
+    private let rangeOfOverlay: Double = 200
+    
+    func getRange() -> Double {
+        return rangeOfOverlay
+    }
+    
+    func getCurrentUserLocation() {
+        coordinate2D = locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        updateMapRegion(rangeSpan: rangeOfOverlay)
+    }
     
     func setupCoreLocation() {
         self.delegate = self
@@ -22,9 +32,9 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
             break
-        case .authorizedAlways:
-            coordinate2D = locationManager.location?.coordinate
-            updateMapRegion(rangeSpan: 200)
+        case .authorizedAlways, .authorizedWhenInUse:
+            enableLocationServices()
+            getCurrentUserLocation()
         default:
             break
         }
@@ -47,19 +57,25 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     
     func lookUpCurrentLocation(coords: CLLocationCoordinate2D, completionHandler: @escaping (CLPlacemark?)
         -> Void ) {
-        let geocoder = CLGeocoder()
-        let locationFromCoords = CLLocation(latitude: coords.latitude, longitude: coords.longitude)
-        // Look up the location and pass it to the completion handler
-        geocoder.reverseGeocodeLocation(locationFromCoords, completionHandler: { (placemarks, error) in
-            if error == nil {
-                guard let firstLocation = placemarks?[0] else { return completionHandler(nil) }
-                completionHandler(firstLocation)
-            }
-            else {
-                // An error occurred during geocoding.
-                completionHandler(nil)
-            }
-        })
+        DispatchQueue.global(qos: .userInitiated).async {
+            let geocoder = CLGeocoder()
+            let locationFromCoords = CLLocation(latitude: coords.latitude, longitude: coords.longitude)
+            // Look up the location and pass it to the completion handler
+            geocoder.reverseGeocodeLocation(locationFromCoords, completionHandler: { (placemarks, error) in
+                if error == nil {
+                    guard let firstLocation = placemarks?[0] else { return completionHandler(nil) }
+                    DispatchQueue.main.async {
+                        completionHandler(firstLocation)
+                    }
+                }
+                else {
+                    // An error occurred during geocoding.
+                    DispatchQueue.main.async {
+                        completionHandler(nil)
+                    }
+                }
+            })
+        }
     }
     
     func addMeetingSpaceOverlay(radius: Double) {
@@ -67,6 +83,20 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
             if location.coordinate != (locationManager.location?.coordinate)! {
                 let circle = MKCircle(center: location.coordinate, radius: radius)
                 self.add(circle)
+            }
+        }
+    }
+    
+    private func lookForAnnotationsAroundMe () {
+        for location in self.annotations {
+            if location.title != "My Location" {
+                let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                let dist = locationManager.location?.distance(from: loc)
+                //print(location.title!!, " distance is: ", dist!.binade)
+                if dist!.binade <= 200 {
+                    print(location.title!!, " is in circle! Distance is: ", dist!.binade)
+                }
+                
             }
         }
     }
@@ -86,9 +116,7 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last!
         coordinate2D = location.coordinate
-        //let displayLocation = "\(location.timestamp) Coord: \(coordinate2D) Alt: \(location.altitude) meters"
-        //print(displayLocation)
-        updateMapRegion(rangeSpan: 200)
+        lookForAnnotationsAroundMe()
     }
     
     //MARK: MapKit Delegate
@@ -127,5 +155,9 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
 extension CLLocationCoordinate2D {
     static func != (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
         return lhs.latitude != rhs.latitude && lhs.longitude != rhs.longitude ? true : false
+    }
+    
+    static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude ? true : false
     }
 }

@@ -73,6 +73,55 @@ final class OpenServerNetworkController: NetworkController {
         }
     }
     
+    func fetchMeetingSpacesByCity(city: String, completionHandler: @escaping(Bool, Data?, Error?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let endpoint = "http://macbook-pro-bogdan.local:3012/getPlaceByCity/" + city
+            let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            guard let endpointURL = URL(string: safeURLString!) else {
+                completionHandler(false, nil, NetworkControllerError.invalidURL(safeURLString!))
+                return
+            }
+            //Specify this request as being a POST method
+            var request = URLRequest(url: endpointURL)
+            request.httpMethod = "GET"
+            // Make sure that we include headers specifying that our request's HTTP body
+            // will be JSON encoded
+            var headers = request.allHTTPHeaderFields ?? [:]
+            headers["Content-Type"] = "application/json"
+            request.allHTTPHeaderFields = headers
+            
+            // Create and run a URLSession data task with our JSON encoded POST request
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { (responseData, response, responseError) in
+                print("Server Error: " + responseError.debugDescription)
+                guard responseError == nil else {
+                    DispatchQueue.main.async {
+                        completionHandler(false, nil, responseError)
+                    }
+                    return
+                }
+                
+                // APIs usually respond with the data you just sent in your POST request
+                if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8) {
+                    print("response: ", utf8Representation)
+                    if utf8Representation.contains("No city") {
+                        DispatchQueue.main.async {
+                            completionHandler(false, nil, NetworkControllerError.invalidURL(utf8Representation))
+                        }
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        completionHandler(true, data, nil)
+                    }
+                } else {
+                    print("no readable data received in response")
+                }
+            }
+            task.resume()
+        }
+    }
     
     func registerNewUser(userCred: User?, completionHandler: @escaping (Bool, Error?) -> Void) {
         let endpoint = "http://macbook-pro-bogdan.local:3012/addUser"

@@ -83,5 +83,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetMeApp/Views/MapViewController.swift"
+            timestampString = "554864723.914658"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeetMeApp.MapViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "MeetMeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bogdannikolaev/Dropbox/ProjectClient/MeetMeApp/MeetMeApp/Views/MapViewController.swift"
+                  timestampString = "554863919.848906"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "989">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.CLPlacemark&gt;) -&gt; () in MeetMeApp.MapViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "MeetMeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bogdannikolaev/Dropbox/ProjectClient/MeetMeApp/MeetMeApp/Views/MapViewController.swift"
+                  timestampString = "554863919.851781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

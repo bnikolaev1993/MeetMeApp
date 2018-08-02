@@ -14,39 +14,39 @@ class MapViewController: UIViewController {
     @IBOutlet weak var trackOutlet: UIImageView!
     @IBOutlet weak var statusLabel: StatusLableDesignable!
     @IBOutlet weak var map: MapController!
-    var isTracking: Bool = false
+    var placeManager: PlaceManager!
+    
     @IBAction func enableTrackingBtn(_ sender: UIButton) {
-        sender.layer.removeAllAnimations()
-        if !isTracking {
-            isTracking = true
-            map.enableLocationServices()
-            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut, .repeat, .autoreverse], animations: {
-                self.trackOutlet.image = #imageLiteral(resourceName: "trackOnLightOnIcon")
-                self.trackOutlet.alpha = 0.4
-            }, completion: { bool in
-                self.trackOutlet.alpha = 1
-            })
-        }
-        else {
-            isTracking = false
-            self.trackOutlet.layer.removeAllAnimations()
-            self.trackOutlet.image = #imageLiteral(resourceName: "trackOffIcon")
-            map.disableLocationServices()
-        }
+        map.getCurrentUserLocation()
+        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut, .repeat, .autoreverse], animations: {
+            self.trackOutlet.image = #imageLiteral(resourceName: "trackOnLightOnIcon")
+            self.trackOutlet.alpha = 0.4
+        }, completion: { bool in
+            self.trackOutlet.alpha = 1
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         map.setupCoreLocation()
-        // or for swift 2 +
+        placeManager = PlaceManager()
+        let loc = map.locationManager.location?.coordinate
+        map.lookUpCurrentLocation(coords: loc!) { (placemark) in
+            DispatchQueue.main.async {
+                self.placeManager.fetchPlaces(city: (placemark?.locality!)!)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.map.addAnnotations(self.placeManager.createAnnotationsFromPlaces())
+            self.map.addMeetingSpaceOverlay(radius: self.map.getRange())
+        }
+        print(1)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.addMS (_:)))
         self.map.addGestureRecognizer(gesture)
-        //self.view.addGestureRecognizer(gesture)
-        // Do any additional setup after loading the view.
     }
     
     @objc func addMS(_ sender:UITapGestureRecognizer){
-        print("1")
+        print("IS EMPTY: ", self.placeManager.places?.debugDescription as Any)
         if sender.state == .ended {
             let locationInView = sender.location(in: map)
             let locationInCoords = map.convert(locationInView, toCoordinateFrom: map)
@@ -79,7 +79,7 @@ extension MapViewController: CoordsSenderProtocol {
     func coordsRecieved(_ status: Bool, _ statusString: String, _ coords: CLPlacemark?) {
         let annotation = MeetingSpaceAnnotation((coords?.location?.coordinate)!, coords?.thoroughfare ?? "nil", coords?.name ?? "nil")
         map.addAnnotation(annotation)
-        map.addMeetingSpaceOverlay(radius: 200)
+        map.addMeetingSpaceOverlay(radius: map.getRange())
         statusLabel.text = statusString
         statusLabel.alpha = 1
         statusLabel.backgroundColor = UIColor.green.withAlphaComponent(0.4)

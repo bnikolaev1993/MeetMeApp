@@ -45,11 +45,6 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround() 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     deinit {
         print("Login View de-initialized!")
     }

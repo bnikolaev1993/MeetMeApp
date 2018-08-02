@@ -13,6 +13,7 @@ public protocol NetworkController {
     func loginUser(userCred: User?, completionHandler: @escaping(Bool, String, Error?) -> Void)
     
     func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping(Bool, Error?) -> Void)
+    func fetchMeetingSpacesByCity(city: String, completionHandler: @escaping(Bool, Data?, Error?) -> Void)
 }
 
 //Errors that may occur during networking processes

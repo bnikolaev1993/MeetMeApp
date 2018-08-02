@@ -26,6 +26,7 @@
 		CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233C210A46ED0008A5A5 /* UserTest.swift */; };
 		CD5B2350210A4DBF0008A5A5 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5B2347210A4D970008A5A5 /* Sodium.framework */; };
 		CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */; };
+		CD8F7F2C2112582600C9080B /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8F7F2B2112582600C9080B /* PlaceManager.swift */; };
 		CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0443B20EFEBDA002F2F87 /* MapKit.framework */; };
 		CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0443D20EFED88002F2F87 /* MapViewController.swift */; };
 		CDA0444120EFF120002F2F87 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0444020EFF120002F2F87 /* MapController.swift */; };
@@ -104,6 +105,7 @@
 		CD5B233C210A46ED0008A5A5 /* UserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
 		CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = "../../../Documents/SWIFT/swift-sodium/Sodium.xcodeproj"; sourceTree = "<group>"; };
 		CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CD8F7F2B2112582600C9080B /* PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
 		CDA0443B20EFEBDA002F2F87 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CDA0443D20EFED88002F2F87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CDA0444020EFF120002F2F87 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				CD3FCD3920E53BF20050C682 /* Info.plist */,
 				CD3FCD4620E561190050C682 /* User.swift */,
 				CDBB370221051F6B00EA090E /* Place.swift */,
+				CD8F7F2B2112582600C9080B /* PlaceManager.swift */,
 			);
 			path = MeetMeApp;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				CD3FCD4720E561190050C682 /* User.swift in Sources */,
 				CD41AB46210F96FB00B4A605 /* MeetingSpaceAnnotation.swift in Sources */,
 				CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */,
+				CD8F7F2C2112582600C9080B /* PlaceManager.swift in Sources */,
 				CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */,
 				CD210A6B20FE84FB00C37568 /* ViewDesignable.swift in Sources */,
 				CDBB36FF2104F5B100EA090E /* CreateMeetingSpaceViewController.swift in Sources */,

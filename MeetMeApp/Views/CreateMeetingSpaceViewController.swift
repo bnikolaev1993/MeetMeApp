@@ -23,7 +23,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     }
     @IBAction func createMSBtn(_ sender: ButtonDesignable) {
         //Change CreatorID to session variable
-        let place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, privacyPickerText.text!, (state?.location?.coordinate.latitude)!, (state?.location?.coordinate.longitude)!)
+        let place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, (state?.locality)!, privacyPickerText.text!, (state?.location?.coordinate.latitude)!, (state?.location?.coordinate.longitude)!)
         let addPlace = OpenServerNetworkController()
         addPlace.createNewMeetingPlace(placeCred: place) { (completed, error) in
             if error != nil {
