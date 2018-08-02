@@ -36,17 +36,17 @@ class MapViewController: UIViewController {
                 self.placeManager.fetchPlaces(city: (placemark?.locality!)!)
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.map.addAnnotations(self.placeManager.createAnnotationsFromPlaces())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.map.addAnnotations(self.placeManager.getPlaces())
             self.map.addMeetingSpaceOverlay(radius: self.map.getRange())
+            print("Annotations: ", self.map.annotations.count)
         }
-        print(1)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.addMS (_:)))
         self.map.addGestureRecognizer(gesture)
     }
     
     @objc func addMS(_ sender:UITapGestureRecognizer){
-        print("IS EMPTY: ", self.placeManager.places?.debugDescription as Any)
+        print("IS EMPTY: ", self.placeManager.displayPlacesArrayContent() as Any)
         if sender.state == .ended {
             let locationInView = sender.location(in: map)
             let locationInCoords = map.convert(locationInView, toCoordinateFrom: map)
@@ -63,6 +63,7 @@ class MapViewController: UIViewController {
                             let createMSPopUp = sb.instantiateViewController(withIdentifier: "createMSPopUpVC") as? CreateMeetingSpaceViewController
                             createMSPopUp?.state = placemark!
                             createMSPopUp?.delegate = self
+                            createMSPopUp?.placeManagerDelegate = self.placeManager
                             createMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                             createMSPopUp?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                             self.present(createMSPopUp!, animated: true)
@@ -76,9 +77,8 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: CoordsSenderProtocol {
-    func coordsRecieved(_ status: Bool, _ statusString: String, _ coords: CLPlacemark?) {
-        let annotation = MeetingSpaceAnnotation((coords?.location?.coordinate)!, coords?.thoroughfare ?? "nil", coords?.name ?? "nil")
-        map.addAnnotation(annotation)
+    func coordsRecieved(_ status: Bool, _ statusString: String, _ place: Place?) {
+        map.addAnnotation(place!)
         map.addMeetingSpaceOverlay(radius: map.getRange())
         statusLabel.text = statusString
         statusLabel.alpha = 1

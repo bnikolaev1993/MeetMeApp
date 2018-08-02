@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import MapKit
 
-public class Place: Codable {
+public class Place: NSObject, Codable, MKAnnotation {
+    public var coordinate: CLLocationCoordinate2D
+    public var title: String?
+    public var subtitle: String?
     let creatorID: Int
     let name: String
     let placemark: String
@@ -17,13 +21,18 @@ public class Place: Codable {
     let latitude: Double
     let longitude: Double
     
-    init(_ id: Int, _ name: String, _ placemark: String, _ city: String, _ privacy: String, _ lat: Double, _ long: Double) {
+    public var identifier = "meetingSpacePin"
+    
+    init(_ id: Int, _ name: String, _ placemark: String, _ city: String, _ privacy: String, _ coordinate: CLLocationCoordinate2D) {
         self.creatorID = id
+        self.title = name
+        self.subtitle = placemark
         self.name = name
         self.placemark = placemark
         self.privacy = privacy
-        self.longitude = long
-        self.latitude = lat
+        self.coordinate = coordinate
+        self.longitude = coordinate.longitude
+        self.latitude = coordinate.latitude
         self.city = city
     }
     
@@ -37,7 +46,7 @@ public class Place: Codable {
         case longitude = "long"
     }
     
-    required public init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         creatorID = try container.decode(Int.self, forKey: .creatorID)
         name = try container.decode(String.self, forKey: .name)
@@ -46,5 +55,8 @@ public class Place: Codable {
         privacy = try container.decode(String.self, forKey: .privacy)
         latitude = try container.decode(Double.self, forKey: .latitude)
         longitude = try container.decode(Double.self, forKey: .longitude)
+        coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        title = name
+        subtitle = placemark
     }
 }

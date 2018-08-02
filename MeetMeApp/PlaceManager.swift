@@ -11,7 +11,7 @@ import MapKit
 
 class PlaceManager: Codable {
     
-    var places: [Place]?
+    private var places: [Place]?
     
     func fetchPlaces (city: String) {
         let server = OpenServerNetworkController()
@@ -28,13 +28,18 @@ class PlaceManager: Codable {
         //return self.places!
     }
     
-    func createAnnotationsFromPlaces () -> [MKAnnotation] {
-        var annotationsArray: [MKAnnotation] = []
-        for item in places! {
-            let coords = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
-            let annotation = MeetingSpaceAnnotation(coords, item.name, item.placemark)
-            annotationsArray.append(annotation)
-        }
-        return annotationsArray
+    func addPlaceToArray (_ p: Place) {
+        places?.append(p)
+    }
+    
+    func displayPlacesArrayContent () -> String {
+        return places.debugDescription
+    }
+    
+    func getPlaces () -> [Place] {
+        return places!
+    }
+    func getLastAddedPlace() -> Place {
+        return places!.last!
     }
 }

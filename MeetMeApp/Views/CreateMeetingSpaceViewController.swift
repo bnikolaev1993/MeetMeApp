@@ -15,6 +15,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     let privacyPicker = UIPickerView()
     let privacyPickerValues = ["Public", "Private"]
     var delegate: CoordsSenderProtocol?
+    var placeManagerDelegate: PlaceManager?
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var meetingSpaceNameTF: UITextField!
     @IBOutlet weak var privacyPickerText: UITextField!
@@ -23,7 +24,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     }
     @IBAction func createMSBtn(_ sender: ButtonDesignable) {
         //Change CreatorID to session variable
-        let place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, (state?.locality)!, privacyPickerText.text!, (state?.location?.coordinate.latitude)!, (state?.location?.coordinate.longitude)!)
+        var place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, (state?.locality)!, privacyPickerText.text!,  (state?.location?.coordinate)!)
         let addPlace = OpenServerNetworkController()
         addPlace.createNewMeetingPlace(placeCred: place) { (completed, error) in
             if error != nil {
@@ -33,7 +34,9 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
                 }
             }
             if completed {
-                self.delegate?.coordsRecieved(true, "Meeting Space Created Successfully!", self.state)
+                self.placeManagerDelegate?.addPlaceToArray(place)
+                place = (self.placeManagerDelegate?.getLastAddedPlace())!
+                self.delegate?.coordsRecieved(true, "Meeting Space Created Successfully!", place)
                 self.dismiss(animated: true)
             }
         }

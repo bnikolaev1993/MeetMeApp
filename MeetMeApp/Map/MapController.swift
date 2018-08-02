@@ -122,7 +122,8 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     //MARK: MapKit Delegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = MKAnnotationView()
-        guard let annotation = annotation as? MeetingSpaceAnnotation else {
+        guard let annotation = annotation as? Place else {
+            print(true)
             return nil
         }
         if let dequedView = self.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
