@@ -49,14 +49,18 @@ extension MainMenuViewController: StatusSenderProtocol {
         statusLabel.isHidden = false
         statusLabel.text = status
     }
-    func isLogin(status: Bool)
+    func isLogin(status: Bool, user: User)
     {
         if status {
-            print("BOOO!!!")
             //self.dismiss(animated: false)
             let sb = UIStoryboard(name: "MeetMeApp", bundle: nil)
             let popup = sb.instantiateViewController(withIdentifier: "meetMeTabVC") as! UITabBarController
             popup.selectedIndex = 1
+            guard let vc = popup.selectedViewController! as? MapViewController else {
+                print("ERROR: Can't assigned CurrentUser")
+                return
+            }
+            vc.currentUser = user
             self.present(popup, animated: true)
         }
     }

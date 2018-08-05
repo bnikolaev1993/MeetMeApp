@@ -12,6 +12,9 @@ class LoginViewController: UIViewController {
     
     weak var delegate: StatusSenderProtocol?
     
+    @IBAction func closeBtnOutlet(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var responseLabel: StatusLableDesignable!
@@ -31,10 +34,13 @@ class LoginViewController: UIViewController {
                     self.responseLabel.text = error?.localizedDescription
                 }
             } else {
-                print(response)
                 DispatchQueue.main.async {
+                    guard let user = try? JSONDecoder().decode(User.self, from: response!) else {
+                        print("Error: Couldn't decode data into User")
+                        return
+                    }
                     self.dismiss(animated: false)
-                    self.delegate?.isLogin(status: true)
+                    self.delegate?.isLogin(status: true, user: user)
                 }
             }
         }

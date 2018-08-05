@@ -9,13 +9,13 @@
 import Foundation
 
 final class OpenServerNetworkController: NetworkController {
-    func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping (Bool, Error?) -> Void) {
+    func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping (Bool, Int?, Error?) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             let endpoint = "http://macbook-pro-bogdan.local:3012/addPlace"
             let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             
             guard let endpointURL = URL(string: safeURLString!) else {
-                completionHandler(false, NetworkControllerError.invalidURL(safeURLString!))
+                completionHandler(false, nil, NetworkControllerError.invalidURL(safeURLString!))
                 return
             }
             //Specify this request as being a POST method
@@ -36,7 +36,7 @@ final class OpenServerNetworkController: NetworkController {
                 print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
             } catch {
                 DispatchQueue.main.async {
-                    completionHandler(false, error)
+                    completionHandler(false, nil, error)
                     return
                 }
             }
@@ -48,7 +48,7 @@ final class OpenServerNetworkController: NetworkController {
                 print("Server Error: " + responseError.debugDescription)
                     guard responseError == nil else {
                         DispatchQueue.main.async {
-                            completionHandler(false, responseError)
+                            completionHandler(false, nil, responseError)
                         }
                         return
                     }
@@ -58,7 +58,7 @@ final class OpenServerNetworkController: NetworkController {
                     print("response: ", utf8Representation)
                     if utf8Representation.contains("Saving place failed") {
                         DispatchQueue.main.async {
-                            completionHandler(false, NetworkControllerError.invalidURL(utf8Representation))
+                            completionHandler(false, nil, NetworkControllerError.invalidURL(utf8Representation))
                         }
                         return
                     }
@@ -66,7 +66,18 @@ final class OpenServerNetworkController: NetworkController {
                     print("no readable data received in response")
                 }
                 DispatchQueue.main.async {
-                    completionHandler(true, nil)
+                    do {
+                        guard let json = try JSONSerialization.jsonObject(with: responseData!, options: .allowFragments) as? [String:Int] else {
+                            DispatchQueue.main.async {
+                                completionHandler(false, nil, nil)
+                            }
+                            return
+                        }
+                        let posts = json["id"]
+                        completionHandler(true, posts, nil)
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
             }
             task.resume()
@@ -117,6 +128,134 @@ final class OpenServerNetworkController: NetworkController {
                     }
                 } else {
                     print("no readable data received in response")
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func joinMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let endpoint = "http://macbook-pro-bogdan.local:3012/joinPlace"
+            let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            guard let endpointURL = URL(string: safeURLString!) else {
+                completionHandler(false, NetworkControllerError.invalidURL(safeURLString!))
+                return
+            }
+            //Specify this request as being a POST method
+            var request = URLRequest(url: endpointURL)
+            request.httpMethod = "POST"
+            // Make sure that we include headers specifying that our request's HTTP body
+            // will be JSON encoded
+            var headers = request.allHTTPHeaderFields ?? [:]
+            headers["Content-Type"] = "application/json"
+            request.allHTTPHeaderFields = headers
+            
+            // Now let's encode out Post struct into JSON data...
+            let encoder = JSONEncoder()
+            do {
+                let jsonData = try encoder.encode(credID)
+                // ... and set our request's HTTP body
+                request.httpBody = jsonData
+                print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
+            } catch {
+                DispatchQueue.main.async {
+                    completionHandler(false, error)
+                    return
+                }
+            }
+            
+            // Create and run a URLSession data task with our JSON encoded POST request
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { (responseData, response, responseError) in
+                print("Server Error: " + responseError.debugDescription)
+                guard responseError == nil else {
+                    DispatchQueue.main.async {
+                        completionHandler(false, responseError)
+                    }
+                    return
+                }
+                
+                // APIs usually respond with the data you just sent in your POST request
+                if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8) {
+                    print("response: ", utf8Representation)
+                    if utf8Representation.contains("Saving place failed") {
+                        DispatchQueue.main.async {
+                            completionHandler(false, NetworkControllerError.invalidURL(utf8Representation))
+                        }
+                        return
+                    }
+                } else {
+                    print("no readable data received in response")
+                }
+                DispatchQueue.main.async {
+                    completionHandler(true, nil)
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func leaveMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let endpoint = "http://macbook-pro-bogdan.local:3012/leavePlace"
+            let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            guard let endpointURL = URL(string: safeURLString!) else {
+                completionHandler(false, NetworkControllerError.invalidURL(safeURLString!))
+                return
+            }
+            //Specify this request as being a POST method
+            var request = URLRequest(url: endpointURL)
+            request.httpMethod = "POST"
+            // Make sure that we include headers specifying that our request's HTTP body
+            // will be JSON encoded
+            var headers = request.allHTTPHeaderFields ?? [:]
+            headers["Content-Type"] = "application/json"
+            request.allHTTPHeaderFields = headers
+            
+            // Now let's encode out Post struct into JSON data...
+            let encoder = JSONEncoder()
+            do {
+                let jsonData = try encoder.encode(credID)
+                // ... and set our request's HTTP body
+                request.httpBody = jsonData
+                print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
+            } catch {
+                DispatchQueue.main.async {
+                    completionHandler(false, error)
+                    return
+                }
+            }
+            
+            // Create and run a URLSession data task with our JSON encoded POST request
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { (responseData, response, responseError) in
+                print("Server Error: " + responseError.debugDescription)
+                guard responseError == nil else {
+                    DispatchQueue.main.async {
+                        completionHandler(false, responseError)
+                    }
+                    return
+                }
+                
+                // APIs usually respond with the data you just sent in your POST request
+                if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8) {
+                    print("response: ", utf8Representation)
+                    if utf8Representation.contains("Leaving place failed") {
+                        DispatchQueue.main.async {
+                            completionHandler(false, NetworkControllerError.invalidURL(utf8Representation))
+                        }
+                        return
+                    }
+                } else {
+                    print("no readable data received in response")
+                }
+                DispatchQueue.main.async {
+                    completionHandler(true, nil)
                 }
             }
             task.resume()
@@ -177,9 +316,9 @@ final class OpenServerNetworkController: NetworkController {
         task.resume()
     }
     
-    func loginUser(userCred: User?, completionHandler: @escaping(Bool, String, Error?) -> Void) {
+    func loginUser(userCred: User?, completionHandler: @escaping(Bool, Data?, Error?) -> Void) {
         if userCred!.isNil() {
-            completionHandler(false, "", NetworkControllerError.invalidLogin("Empty Fields"))
+            completionHandler(false, nil, NetworkControllerError.invalidLogin("Empty Fields"))
             return
         }
         
@@ -188,7 +327,7 @@ final class OpenServerNetworkController: NetworkController {
         let safeURLString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         guard let endpointURL = URL(string: safeURLString!) else {
-            completionHandler(false, res, NetworkControllerError.invalidURL(safeURLString!))
+            completionHandler(false, nil, NetworkControllerError.invalidURL(safeURLString!))
             return
         }
         //Specify this request as being a POST method
@@ -208,7 +347,7 @@ final class OpenServerNetworkController: NetworkController {
             request.httpBody = jsonData
             print("jsonData: ", String(data: request.httpBody!, encoding: .utf8) ?? "no body data")
         } catch {
-            completionHandler(false, res, error)
+            completionHandler(false, nil, error)
             return
         }
         
@@ -216,13 +355,13 @@ final class OpenServerNetworkController: NetworkController {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
             guard response != nil else {
-                completionHandler(false, res, responseError)
+                completionHandler(false, nil, responseError)
                 return
             }
             let httpResponse = response as! HTTPURLResponse
             print("Server Error: " + httpResponse.statusCode.description)
             guard responseError == nil else {
-                completionHandler(false, res, responseError)
+                completionHandler(false, nil, responseError)
                 return
             }
             
@@ -231,13 +370,13 @@ final class OpenServerNetworkController: NetworkController {
                 print("response: ", utf8Representation)
                 res = utf8Representation
                 if res.contains("Invalid") {
-                    completionHandler(false, "", NetworkControllerError.invalidLogin(res))
+                    completionHandler(false, nil, NetworkControllerError.invalidLogin(res))
                     return
                 }
             } else {
                 print("no readable data received in response")
             }
-            completionHandler(true, res, nil)
+            completionHandler(true, responseData!, nil)
         }
         task.resume()
     }

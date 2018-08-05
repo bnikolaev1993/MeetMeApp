@@ -15,10 +15,11 @@ class MapViewController: UIViewController {
     @IBOutlet weak var statusLabel: StatusLableDesignable!
     @IBOutlet weak var map: MapController!
     var placeManager: PlaceManager!
+    public var currentUser: User!
     
     @IBAction func enableTrackingBtn(_ sender: UIButton) {
         map.getCurrentUserLocation()
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut, .repeat, .autoreverse], animations: {
+        UIView.animate(withDuration: 5, delay: 0, options: [.curveEaseOut, .repeat, .autoreverse], animations: {
             self.trackOutlet.image = #imageLiteral(resourceName: "trackOnLightOnIcon")
             self.trackOutlet.alpha = 0.4
         }, completion: { bool in
@@ -46,7 +47,9 @@ class MapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackOutlet.image = #imageLiteral(resourceName: "trackOnIcon")
         map.setupCoreLocation()
+        displayCurrentUserInfo()
     }
     
     @objc func addMS(_ sender:UITapGestureRecognizer){
@@ -66,6 +69,7 @@ class MapViewController: UIViewController {
                             let sb = UIStoryboard(name: "MeetMeApp", bundle: nil)
                             let createMSPopUp = sb.instantiateViewController(withIdentifier: "createMSPopUpVC") as? CreateMeetingSpaceViewController
                             createMSPopUp?.state = placemark!
+                            createMSPopUp?.currentUserId = self.currentUser.user_id!
                             createMSPopUp?.delegate = self
                             createMSPopUp?.placeManagerDelegate = self.placeManager
                             createMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -75,10 +79,13 @@ class MapViewController: UIViewController {
                     }
                 }
                 else {
-                    let place = self.map.tappedAnnotation!
+                    guard let place = self.map.tappedAnnotation else {
+                        return
+                    }
                     let sb = UIStoryboard(name: "MeetMeApp", bundle: nil)
                     let showMSPopUp = sb.instantiateViewController(withIdentifier: "showMSPopUpVC") as? ShowMeetingSpaceViewController
                     showMSPopUp?.place = place
+                    showMSPopUp?.currentUser = self.currentUser!
                     showMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     showMSPopUp?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                     self.present(showMSPopUp!, animated: true)
@@ -103,5 +110,13 @@ extension MapViewController: CoordsSenderProtocol {
             self.statusLabel.alpha = 0
             //self.statusLabel.isHidden = true
         }, completion: nil)
+    }
+}
+
+extension MapViewController {
+    func displayCurrentUserInfo () {
+        print("Current ID: ", currentUser.user_id!)
+        print("Current user: ", currentUser.username)
+        print("Places: ", currentUser.placesJoined!.count)
     }
 }

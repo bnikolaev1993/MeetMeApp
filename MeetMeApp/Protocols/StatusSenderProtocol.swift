@@ -11,7 +11,7 @@ import MapKit
 
 protocol StatusSenderProtocol: AnyObject{
     func sendStatus(status: String)
-    func isLogin(status: Bool)
+    func isLogin(status: Bool, user: User)
 }
 
 protocol CoordsSenderProtocol: AnyObject {

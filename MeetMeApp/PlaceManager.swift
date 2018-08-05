@@ -21,10 +21,9 @@ class PlaceManager: Codable {
         let server = OpenServerNetworkController()
         server.fetchMeetingSpacesByCity(city: cityInEnglish) { (bool, data, error) in
             guard let places = try? JSONDecoder().decode([Place].self, from: data!) else {
-                print("Error: Couldn't decode data into Blog")
+                print("Error: Couldn't decode data into Place")
                 return
             }
-            print(places.debugDescription)
             DispatchQueue.main.async {
                 self.places = places
             }
@@ -41,7 +40,7 @@ class PlaceManager: Codable {
     }
     
     func getPlaces () -> [Place] {
-        return places!
+        return (places ?? nil)!
     }
     func getLastAddedPlace() -> Place {
         return places!.last!

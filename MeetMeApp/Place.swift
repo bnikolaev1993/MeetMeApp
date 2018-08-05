@@ -13,6 +13,7 @@ public class Place: NSObject, Codable, MKAnnotation {
     public var coordinate: CLLocationCoordinate2D
     public var title: String?
     public var subtitle: String?
+    var place_id: Int?
     let creatorID: Int
     let name: String
     let placemark: String
@@ -36,9 +37,11 @@ public class Place: NSObject, Codable, MKAnnotation {
         self.longitude = coordinate.longitude
         self.latitude = coordinate.latitude
         self.city = city
+        place_id = 0
     }
     
     enum CodingKeys: String, CodingKey {
+        case place_id = "id"
         case creatorID = "user_id"
         case name
         case placemark
@@ -51,6 +54,7 @@ public class Place: NSObject, Codable, MKAnnotation {
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        place_id = try container.decode(Int.self, forKey: .place_id)
         creatorID = try container.decode(Int.self, forKey: .creatorID)
         name = try container.decode(String.self, forKey: .name)
         placemark = try container.decode(String.self, forKey: .placemark)

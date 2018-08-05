@@ -17,6 +17,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     let privacyPickerValues = ["Public", "Private"]
     var delegate: CoordsSenderProtocol?
     var placeManagerDelegate: PlaceManager?
+    var currentUserId: Int?
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var meetingSpaceNameTF: UITextField!
     @IBOutlet weak var privacyPickerText: UITextField!
@@ -30,9 +31,9 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
         {
             cityName = "Preston"
         }
-        var place = Place(1, meetingSpaceNameTF.text!, (state?.name)!, cityName!, descriptionOutlet.text!, privacyPickerText.text!,  (state?.location?.coordinate)!)
+        var place = Place(currentUserId!, meetingSpaceNameTF.text!, (state?.name)!, cityName!, descriptionOutlet.text!, privacyPickerText.text!,  (state?.location?.coordinate)!)
         let addPlace = OpenServerNetworkController()
-        addPlace.createNewMeetingPlace(placeCred: place) { (completed, error) in
+        addPlace.createNewMeetingPlace(placeCred: place) { (completed, place_id, error) in
             if error != nil {
                 DispatchQueue.main.async {
                     self.statusLabelOutlet.text = error?.localizedDescription
@@ -40,6 +41,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
                 }
             }
             if completed {
+                place.place_id = place_id!
                 self.placeManagerDelegate?.addPlaceToArray(place)
                 place = (self.placeManagerDelegate?.getLastAddedPlace())!
                 self.delegate?.coordsRecieved(true, "Meeting Space Created Successfully!", place)

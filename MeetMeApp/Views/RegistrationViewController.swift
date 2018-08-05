@@ -10,6 +10,9 @@ import UIKit
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
+    @IBAction func closeBtn(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var firstnameText: UITextField!

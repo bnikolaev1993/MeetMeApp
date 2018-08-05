@@ -10,10 +10,12 @@ import Foundation
 
 public protocol NetworkController {
     func registerNewUser(userCred: User?, completionHandler: @escaping(Bool, Error?) -> Void)
-    func loginUser(userCred: User?, completionHandler: @escaping(Bool, String, Error?) -> Void)
+    func loginUser(userCred: User?, completionHandler: @escaping(Bool, Data?, Error?) -> Void)
     
-    func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping(Bool, Error?) -> Void)
+    func createNewMeetingPlace(placeCred: Place, completionHandler: @escaping(Bool, Int?, Error?) -> Void)
     func fetchMeetingSpacesByCity(city: String, completionHandler: @escaping(Bool, Data?, Error?) -> Void)
+    func joinMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void)
+    func leaveMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void)
 }
 
 //Errors that may occur during networking processes

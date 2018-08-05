@@ -124,7 +124,6 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = MKAnnotationView()
         guard let annotation = annotation as? Place else {
-            print(true)
             return nil
         }
         if let dequedView = self.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
@@ -138,10 +137,14 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view:  MKAnnotationView) {
-        isAnnotationSelected = true
-        let place = view.annotation as? Place
-        tappedAnnotation = place!
+        if view.annotation?.title != "My Location" {
+            isAnnotationSelected = true
+        guard let place = view.annotation as? Place else {
+            return
+        }
+        tappedAnnotation = place
         print("Tapped on Annotation")
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

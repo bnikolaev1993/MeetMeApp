@@ -14,6 +14,7 @@
 		CD210A6F20FE8D6700C37568 /* ButtonDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD210A6E20FE8D6700C37568 /* ButtonDesignable.swift */; };
 		CD210A7220FEC74100C37568 /* StatusSenderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD210A7120FEC74000C37568 /* StatusSenderProtocol.swift */; };
 		CD210A7420FEC80700C37568 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD210A7320FEC80700C37568 /* MainMenuViewController.swift */; };
+		CD36AED82116BF2100536AAF /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36AED72116BF2100536AAF /* CustomColor.swift */; };
 		CD3FCD2E20E53BF00050C682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD2D20E53BF00050C682 /* AppDelegate.swift */; };
 		CD3FCD3320E53BF00050C682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3FCD3120E53BF00050C682 /* Main.storyboard */; };
 		CD3FCD3520E53BF20050C682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3FCD3420E53BF20050C682 /* Assets.xcassets */; };
@@ -109,6 +110,7 @@
 		CD210A6E20FE8D6700C37568 /* ButtonDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDesignable.swift; sourceTree = "<group>"; };
 		CD210A7120FEC74000C37568 /* StatusSenderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSenderProtocol.swift; sourceTree = "<group>"; };
 		CD210A7320FEC80700C37568 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		CD36AED72116BF2100536AAF /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		CD3FCD2A20E53BF00050C682 /* MeetMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3FCD2D20E53BF00050C682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD3FCD3220E53BF00050C682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				CD210A6C20FE8B5A00C37568 /* UITextFieldDesignable.swift */,
 				CD210A6E20FE8D6700C37568 /* ButtonDesignable.swift */,
 				CD558B36210576C500D3C91E /* HideKeyboard.swift */,
+				CD36AED72116BF2100536AAF /* CustomColor.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				CD3FCD2E20E53BF00050C682 /* AppDelegate.swift in Sources */,
 				CDA0444120EFF120002F2F87 /* MapController.swift in Sources */,
 				CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */,
+				CD36AED82116BF2100536AAF /* CustomColor.swift in Sources */,
 				CD210A6D20FE8B5A00C37568 /* UITextFieldDesignable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
