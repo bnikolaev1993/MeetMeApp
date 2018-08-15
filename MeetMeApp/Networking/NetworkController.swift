@@ -16,6 +16,8 @@ public protocol NetworkController {
     func fetchMeetingSpacesByCity(city: String, completionHandler: @escaping(Bool, Data?, Error?) -> Void)
     func joinMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void)
     func leaveMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void)
+    func deleteMeetingSpace(credID: Dictionary<String, Int>, completionHandler: @escaping(Bool, Error?) -> Void)
+    func getPlaceById(placeId: Int, completionHandler: @escaping(Bool, Error?) -> Void)
 }
 
 //Errors that may occur during networking processes

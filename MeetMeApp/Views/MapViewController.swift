@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var map: MapController!
     var placeManager: PlaceManager!
     public var currentUser: User!
+    public var currentCity: String!
     
     @IBAction func enableTrackingBtn(_ sender: UIButton) {
         map.getCurrentUserLocation()
@@ -29,27 +30,34 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        map.setupCoreLocation()
         placeManager = PlaceManager()
-        let loc = map.locationManager.location?.coordinate
-        map.lookUpCurrentLocation(coords: loc!) { (placemark) in
-            DispatchQueue.main.async {
-                self.placeManager.fetchPlaces(city: (placemark?.locality!)!)
-            }
-        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.map.addAnnotations(self.placeManager.getPlaces())
-            self.map.addMeetingSpaceOverlay(radius: self.map.getRange())
-            print("Annotations: ", self.map.annotations.count)
+            let loc = self.map.locationManager.location?.coordinate
+            self.map.lookUpCurrentLocation(coords: loc!) { (placemark) in
+                DispatchQueue.main.async {
+                    let tvc = self.tabBarController as! UserTabController
+                    tvc.currentCity = (placemark?.locality)!
+                    self.currentCity = tvc.currentCity
+                }
+            }
         }
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.addMS (_:)))
         self.map.addGestureRecognizer(gesture)
+        print("View Did Load")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let tvc = self.tabBarController as! UserTabController
+        currentUser = tvc.currentUser
+        currentCity = tvc.currentCity
         trackOutlet.image = #imageLiteral(resourceName: "trackOnIcon")
-        map.setupCoreLocation()
+        if !tvc.currentCity.isEmpty {
+            updateMap()
+        }
         displayCurrentUserInfo()
+        print("View Will Appear")
     }
     
     @objc func addMS(_ sender:UITapGestureRecognizer){
@@ -86,6 +94,7 @@ class MapViewController: UIViewController {
                     let showMSPopUp = sb.instantiateViewController(withIdentifier: "showMSPopUpVC") as? ShowMeetingSpaceViewController
                     showMSPopUp?.place = place
                     showMSPopUp?.currentUser = self.currentUser!
+                    showMSPopUp?.delegate = self
                     showMSPopUp?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     showMSPopUp?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                     self.present(showMSPopUp!, animated: true)
@@ -94,10 +103,15 @@ class MapViewController: UIViewController {
             }
         }
     }
+    
+    deinit {
+        print("Map View Deinitialized!")
+    }
 }
 
 extension MapViewController: CoordsSenderProtocol {
     func coordsRecieved(_ status: Bool, _ statusString: String, _ place: Place?) {
+        currentUser.placesJoined?.append(place!)
         map.addAnnotation(place!)
         map.addMeetingSpaceOverlay(radius: map.getRange())
         statusLabel.text = statusString
@@ -110,6 +124,22 @@ extension MapViewController: CoordsSenderProtocol {
             self.statusLabel.alpha = 0
             //self.statusLabel.isHidden = true
         }, completion: nil)
+    }
+}
+
+extension MapViewController: UpdateMapProtocol {
+    func updateMap() {
+        self.map.removeAnnotations(map.annotations)
+        self.map.removeOverlays(map.overlays)
+        self.placeManager.fetchPlaces(city: self.currentCity) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    self.map.addAnnotations(self.placeManager.getPlaces())
+                    self.map.addMeetingSpaceOverlay(radius: self.map.getRange())
+                    print("Annotations: ", self.map.annotations.count)
+                }
+            }
+        }
     }
 }
 

@@ -26,6 +26,8 @@
 		CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD558B36210576C500D3C91E /* HideKeyboard.swift */; };
 		CD5B233B210A46B20008A5A5 /* OpenServerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */; };
 		CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233C210A46ED0008A5A5 /* UserTest.swift */; };
+		CD791B08211796EC005BC304 /* MeetingSpacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791B07211796EC005BC304 /* MeetingSpacesTableViewController.swift */; };
+		CD791B0E21179B51005BC304 /* CurrentUserUITabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791B0D21179B51005BC304 /* CurrentUserUITabView.swift */; };
 		CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */; };
 		CD8F7F2C2112582600C9080B /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8F7F2B2112582600C9080B /* PlaceManager.swift */; };
 		CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0443B20EFEBDA002F2F87 /* MapKit.framework */; };
@@ -127,6 +129,8 @@
 		CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerControllerTest.swift; sourceTree = "<group>"; };
 		CD5B233C210A46ED0008A5A5 /* UserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
 		CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = "../../../Documents/SWIFT/swift-sodium/Sodium.xcodeproj"; sourceTree = "<group>"; };
+		CD791B07211796EC005BC304 /* MeetingSpacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingSpacesTableViewController.swift; sourceTree = "<group>"; };
+		CD791B0D21179B51005BC304 /* CurrentUserUITabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserUITabView.swift; sourceTree = "<group>"; };
 		CD8E00ED20EAF7E300B8155E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CD8F7F2B2112582600C9080B /* PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
 		CDA0443B20EFEBDA002F2F87 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CD210A7120FEC74000C37568 /* StatusSenderProtocol.swift */,
+				CD791B0D21179B51005BC304 /* CurrentUserUITabView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				CD210A7320FEC80700C37568 /* MainMenuViewController.swift */,
 				CDBB36FE2104F5B100EA090E /* CreateMeetingSpaceViewController.swift */,
 				CD169B102113B4F0006D61C5 /* ShowMeetingSpaceViewController.swift */,
+				CD791B07211796EC005BC304 /* MeetingSpacesTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -457,6 +463,8 @@
 				CD3FCD4020E540040050C682 /* RegistrationViewController.swift in Sources */,
 				CD3FCD4720E561190050C682 /* User.swift in Sources */,
 				CD169B112113B4F0006D61C5 /* ShowMeetingSpaceViewController.swift in Sources */,
+				CD791B08211796EC005BC304 /* MeetingSpacesTableViewController.swift in Sources */,
+				CD791B0E21179B51005BC304 /* CurrentUserUITabView.swift in Sources */,
 				CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */,
 				CD8F7F2C2112582600C9080B /* PlaceManager.swift in Sources */,
 				CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */,

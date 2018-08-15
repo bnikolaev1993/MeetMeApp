@@ -13,7 +13,7 @@ class PlaceManager: Codable {
     
     private var places: [Place]?
     
-    func fetchPlaces (city: String) {
+    func fetchPlaces (city: String, completionHandler: @escaping(Bool) -> Void) {
         var cityInEnglish = city
         if city == "Престон" {
             cityInEnglish = "Preston"
@@ -22,10 +22,12 @@ class PlaceManager: Codable {
         server.fetchMeetingSpacesByCity(city: cityInEnglish) { (bool, data, error) in
             guard let places = try? JSONDecoder().decode([Place].self, from: data!) else {
                 print("Error: Couldn't decode data into Place")
+                completionHandler(false)
                 return
             }
             DispatchQueue.main.async {
                 self.places = places
+                completionHandler(true)
             }
         }
         //return self.places!

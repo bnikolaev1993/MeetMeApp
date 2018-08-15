@@ -135,15 +135,16 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
         annotationView.image = #imageLiteral(resourceName: "pin")
         return annotationView
     }
-
+    
     func mapView(_ mapView: MKMapView, didSelect view:  MKAnnotationView) {
         if view.annotation?.title != "My Location" {
             isAnnotationSelected = true
-        guard let place = view.annotation as? Place else {
-            return
-        }
-        tappedAnnotation = place
-        print("Tapped on Annotation")
+            guard let place = view.annotation as? Place else {
+                return
+            }
+            tappedAnnotation = place
+            print("Tapped on Annotation")
+            selectedAnnotations.removeAll()
         }
     }
     

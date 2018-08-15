@@ -17,3 +17,7 @@ protocol StatusSenderProtocol: AnyObject{
 protocol CoordsSenderProtocol: AnyObject {
     func coordsRecieved(_ status: Bool, _ statusSring: String, _ place: Place?)
 }
+
+protocol UpdateMapProtocol: AnyObject {
+    func updateMap()
+}

@@ -28,8 +28,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     var delegate: StatusSenderProtocol?
     
     @IBAction func SubmitBtnPressed(_ sender: Any) {
-        //let user = User(username: usernameText.text!, firstname: firstnameText.text!, familyname: familynameText.text!, gender: genderText.text!, dob: dobText.text!)
-        let user = User(username: "q", password: "q", firstname: "q", familyname: "String", gender: "c", dob: "17.06.2018")
+        let user = User(username: usernameText.text!, password: passwordText.text!, firstname: firstnameText.text!, familyname: familynameText.text!, gender: genderText.text!, dob: datePickerText.text!)
+        //let user = User(username: "q", password: "q", firstname: "q", familyname: "String", gender: "c", dob: "17.06.2018")
         let register = OpenServerNetworkController()
         register.registerNewUser(userCred: user) { (bool, error) in
             print("Registered: " + bool.description)
@@ -78,7 +78,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @objc func donedatePicker(){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "YYYY-MM-dd"
         datePickerText.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }

@@ -41,11 +41,18 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
                 }
             }
             if completed {
-                place.place_id = place_id!
-                self.placeManagerDelegate?.addPlaceToArray(place)
-                place = (self.placeManagerDelegate?.getLastAddedPlace())!
-                self.delegate?.coordsRecieved(true, "Meeting Space Created Successfully!", place)
-                self.dismiss(animated: true)
+                let credID: Dictionary<String, Int> = ["user_id": self.currentUserId!, "place_id": place_id!]
+                addPlace.joinMeetingSpace(credID: credID, completionHandler: { (success, error) in
+                    if success {
+                        DispatchQueue.main.async {
+                            place.place_id = place_id!
+                            self.placeManagerDelegate?.addPlaceToArray(place)
+                            place = (self.placeManagerDelegate?.getLastAddedPlace())!
+                            self.delegate?.coordsRecieved(true, "Meeting Space Created Successfully!", place)
+                            self.dismiss(animated: true)
+                        }
+                    }
+                })
             }
         }
     }
@@ -131,6 +138,6 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
     }
     
     deinit {
-        print("Create Meeting Sapce deinitialized")
+        print("Create Meeting Space deinitialized")
     }
 }
