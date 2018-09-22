@@ -53,7 +53,7 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     func updateMapRegion(rangeSpan: CLLocationDistance) {
-        region = MKCoordinateRegionMakeWithDistance(coordinate2D!, rangeSpan, rangeSpan)
+        region = MKCoordinateRegion.init(center: coordinate2D!, latitudinalMeters: rangeSpan, longitudinalMeters: rangeSpan)
     }
     
     func lookUpCurrentLocation(coords: CLLocationCoordinate2D, completionHandler: @escaping (CLPlacemark?)
@@ -83,7 +83,7 @@ class MapController: MKMapView, MKMapViewDelegate, CLLocationManagerDelegate {
         for location in self.annotations {
             if location.coordinate != (locationManager.location?.coordinate)! {
                 let circle = MKCircle(center: location.coordinate, radius: radius)
-                self.add(circle)
+                self.addOverlay(circle)
             }
         }
     }

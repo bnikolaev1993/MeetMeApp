@@ -69,7 +69,7 @@ class CreateMeetingSpaceViewController: UIViewController, UIPickerViewDelegate, 
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donePrivacyPicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(donePrivacyPicker));
         
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)

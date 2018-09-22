@@ -16,7 +16,7 @@ class ShowMeetingSpaceViewController: UIViewController {
         let credID: Dictionary<String, Int> = ["user_id": currentUser.user_id!, "place_id": place.place_id!]
         let server = OpenServerNetworkController()
         switch action {
-        case .Join:
+        case .Join?:
             server.joinMeetingSpace(credID: credID) { (successful, error) in
                 if !successful {
                     DispatchQueue.main.async {
@@ -32,7 +32,7 @@ class ShowMeetingSpaceViewController: UIViewController {
                     }
                 }
             }
-        case .Leave:
+        case .Leave?:
             server.leaveMeetingSpace(credID: credID) { (successful, error) in
                 if !successful {
                     DispatchQueue.main.async {
@@ -49,7 +49,7 @@ class ShowMeetingSpaceViewController: UIViewController {
                     }
                 }
             }
-        case .Delete:
+        case .Delete?:
             server.deleteMeetingSpace(credID: credID) { (successful, error) in
                 if !successful {
                     DispatchQueue.main.async {
