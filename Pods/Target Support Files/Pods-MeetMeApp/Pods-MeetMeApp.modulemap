@@ -1,0 +1,6 @@
+framework module Pods_MeetMeApp {
+  umbrella header "Pods-MeetMeApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

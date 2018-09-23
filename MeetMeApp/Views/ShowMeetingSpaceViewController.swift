@@ -12,6 +12,10 @@ class ShowMeetingSpaceViewController: UIViewController {
     @IBAction func closeBtn(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    @IBAction func showChatBtn(_ sender: UIButton) {
+        delegate?.showChat(placeID: place.place_id!)
+        self.dismiss(animated: true)
+    }
     @IBAction func joinBtnOutlet(_ sender: UIButton) {
         let credID: Dictionary<String, Int> = ["user_id": currentUser.user_id!, "place_id": place.place_id!]
         let server = OpenServerNetworkController()
@@ -69,6 +73,7 @@ class ShowMeetingSpaceViewController: UIViewController {
             break
         }
     }
+    
     
     var place: Place!
     var currentUser: User!

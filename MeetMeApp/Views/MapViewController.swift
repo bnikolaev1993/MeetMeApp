@@ -141,6 +141,12 @@ extension MapViewController: UpdateMapProtocol {
             }
         }
     }
+    
+    func showChat(placeID: Int) {
+        let main = self.tabBarController?.viewControllers?[2] as? ChatViewController
+        main?.placeID = placeID
+        self.tabBarController?.selectedIndex = 2
+    }
 }
 
 extension MapViewController {

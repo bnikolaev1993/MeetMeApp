@@ -20,4 +20,5 @@ protocol CoordsSenderProtocol: AnyObject {
 
 protocol UpdateMapProtocol: AnyObject {
     func updateMap()
+    func showChat(placeID: Int)
 }

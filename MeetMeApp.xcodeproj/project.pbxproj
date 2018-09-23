@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		816475ECE270E0168D282626 /* Pods_MeetMeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5212182779E99A96639233D2 /* Pods_MeetMeAppTests.framework */; };
 		CD169B0C2113A9DC006D61C5 /* Sodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD5B2347210A4D970008A5A5 /* Sodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD169B112113B4F0006D61C5 /* ShowMeetingSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD169B102113B4F0006D61C5 /* ShowMeetingSpaceViewController.swift */; };
 		CD210A6B20FE84FB00C37568 /* ViewDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD210A6A20FE84FB00C37568 /* ViewDesignable.swift */; };
@@ -23,6 +24,12 @@
 		CD3FCD4320E5516A0050C682 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4220E5516A0050C682 /* NetworkController.swift */; };
 		CD3FCD4520E5562A0050C682 /* OpenServerNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */; };
 		CD3FCD4720E561190050C682 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FCD4620E561190050C682 /* User.swift */; };
+		CD42408C2156DBEE00B82D5B /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4240842156DBED00B82D5B /* ChatCell.xib */; };
+		CD42408F2156DBEE00B82D5B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4240872156DBED00B82D5B /* BaseTableViewCell.swift */; };
+		CD4240902156DBEE00B82D5B /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4240882156DBEE00B82D5B /* SocketIOManager.swift */; };
+		CD4240912156DBEE00B82D5B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4240892156DBEE00B82D5B /* ChatViewController.swift */; };
+		CD4240922156DBEE00B82D5B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD42408A2156DBEE00B82D5B /* ChatCell.swift */; };
+		CD4240942157193300B82D5B /* Pods_MeetMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4240932157193300B82D5B /* Pods_MeetMeApp.framework */; };
 		CD558B37210576C500D3C91E /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD558B36210576C500D3C91E /* HideKeyboard.swift */; };
 		CD5B233B210A46B20008A5A5 /* OpenServerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233A210A46B20008A5A5 /* OpenServerControllerTest.swift */; };
 		CD5B233D210A46ED0008A5A5 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B233C210A46ED0008A5A5 /* UserTest.swift */; };
@@ -106,6 +113,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		099E2BC1FAFA4EEAB5751E22 /* Pods-MeetMeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetMeAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetMeAppTests/Pods-MeetMeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		47107631FBE3C48DA7DEE061 /* Pods-MeetMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetMeApp/Pods-MeetMeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		48113C0DCA5793E2A8053FAB /* Pods-MeetMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetMeApp/Pods-MeetMeApp.release.xcconfig"; sourceTree = "<group>"; };
+		5212182779E99A96639233D2 /* Pods_MeetMeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetMeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95DB74C94D2F55FD49A05E5C /* Pods_MeetMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BACED49F6BC2C0B3CCC9CE91 /* Pods-MeetMeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetMeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetMeAppTests/Pods-MeetMeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD169B102113B4F0006D61C5 /* ShowMeetingSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeetingSpaceViewController.swift; sourceTree = "<group>"; };
 		CD210A6A20FE84FB00C37568 /* ViewDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDesignable.swift; sourceTree = "<group>"; };
 		CD210A6C20FE8B5A00C37568 /* UITextFieldDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldDesignable.swift; sourceTree = "<group>"; };
@@ -123,6 +136,12 @@
 		CD3FCD4220E5516A0050C682 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenServerNetworkController.swift; sourceTree = "<group>"; };
 		CD3FCD4620E561190050C682 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CD4240842156DBED00B82D5B /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		CD4240872156DBED00B82D5B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		CD4240882156DBEE00B82D5B /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		CD4240892156DBEE00B82D5B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CD42408A2156DBEE00B82D5B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		CD4240932157193300B82D5B /* Pods_MeetMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MeetMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD558B36210576C500D3C91E /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		CD5B232F210A46540008A5A5 /* MeetMeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetMeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5B2333210A46540008A5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4240942157193300B82D5B /* Pods_MeetMeApp.framework in Frameworks */,
 				CDA0443C20EFEBDA002F2F87 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,12 +175,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816475ECE270E0168D282626 /* Pods_MeetMeAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B31E414454E23C80F7F82158 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47107631FBE3C48DA7DEE061 /* Pods-MeetMeApp.debug.xcconfig */,
+				48113C0DCA5793E2A8053FAB /* Pods-MeetMeApp.release.xcconfig */,
+				099E2BC1FAFA4EEAB5751E22 /* Pods-MeetMeAppTests.debug.xcconfig */,
+				BACED49F6BC2C0B3CCC9CE91 /* Pods-MeetMeAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD210A7020FEC72900C37568 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +209,7 @@
 				CD5B2330210A46540008A5A5 /* MeetMeAppTests */,
 				CD3FCD2B20E53BF00050C682 /* Products */,
 				CDA0443A20EFEBDA002F2F87 /* Frameworks */,
+				B31E414454E23C80F7F82158 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +225,7 @@
 		CD3FCD2C20E53BF00050C682 /* MeetMeApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD4240502156CE7200B82D5B /* Messaging System */,
 				CD210A7020FEC72900C37568 /* Protocols */,
 				CDB92B1220FB8E45005162B5 /* UI */,
 				CDA0443F20EFF101002F2F87 /* Map */,
@@ -215,6 +249,18 @@
 				CD3FCD4420E5562A0050C682 /* OpenServerNetworkController.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		CD4240502156CE7200B82D5B /* Messaging System */ = {
+			isa = PBXGroup;
+			children = (
+				CD4240872156DBED00B82D5B /* BaseTableViewCell.swift */,
+				CD42408A2156DBEE00B82D5B /* ChatCell.swift */,
+				CD4240842156DBED00B82D5B /* ChatCell.xib */,
+				CD4240892156DBEE00B82D5B /* ChatViewController.swift */,
+				CD4240882156DBEE00B82D5B /* SocketIOManager.swift */,
+			);
+			path = "Messaging System";
 			sourceTree = "<group>";
 		};
 		CD5B2330210A46540008A5A5 /* MeetMeAppTests */ = {
@@ -250,8 +296,11 @@
 		CDA0443A20EFEBDA002F2F87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD4240932157193300B82D5B /* Pods_MeetMeApp.framework */,
 				CD5B233E210A4D970008A5A5 /* Sodium.xcodeproj */,
 				CDA0443B20EFEBDA002F2F87 /* MapKit.framework */,
+				95DB74C94D2F55FD49A05E5C /* Pods_MeetMeApp.framework */,
+				5212182779E99A96639233D2 /* Pods_MeetMeAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -308,10 +357,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD3FCD3C20E53BF20050C682 /* Build configuration list for PBXNativeTarget "MeetMeApp" */;
 			buildPhases = (
+				A95A35CD3CC541EB87A235BB /* [CP] Check Pods Manifest.lock */,
 				CD3FCD2620E53BF00050C682 /* Sources */,
 				CD3FCD2720E53BF00050C682 /* Frameworks */,
 				CD3FCD2820E53BF00050C682 /* Resources */,
 				CD169B0F2113A9DC006D61C5 /* Embed Frameworks */,
+				B3D426B54DC0B39D3DDDDBE9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,6 +378,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD5B2338210A46540008A5A5 /* Build configuration list for PBXNativeTarget "MeetMeAppTests" */;
 			buildPhases = (
+				45A8A2038CEE50D77DFCB691 /* [CP] Check Pods Manifest.lock */,
 				CD5B232B210A46540008A5A5 /* Sources */,
 				CD5B232C210A46540008A5A5 /* Frameworks */,
 				CD5B232D210A46540008A5A5 /* Resources */,
@@ -437,6 +489,7 @@
 			files = (
 				CD3FCD3820E53BF20050C682 /* LaunchScreen.storyboard in Resources */,
 				CDBB36F92104C8B100EA090E /* MeetMeApp.storyboard in Resources */,
+				CD42408C2156DBEE00B82D5B /* ChatCell.xib in Resources */,
 				CD3FCD3520E53BF20050C682 /* Assets.xcassets in Resources */,
 				CD3FCD3320E53BF00050C682 /* Main.storyboard in Resources */,
 			);
@@ -451,6 +504,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45A8A2038CEE50D77DFCB691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeetMeAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A95A35CD3CC541EB87A235BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeetMeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3D426B54DC0B39D3DDDDBE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MeetMeApp/Pods-MeetMeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetMeApp/Pods-MeetMeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD3FCD2620E53BF00050C682 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -459,6 +571,7 @@
 				CDB92B1620FBBF91005162B5 /* StatusLabelDesignable.swift in Sources */,
 				CD8E00EE20EAF7E300B8155E /* LoginViewController.swift in Sources */,
 				CD210A7220FEC74100C37568 /* StatusSenderProtocol.swift in Sources */,
+				CD42408F2156DBEE00B82D5B /* BaseTableViewCell.swift in Sources */,
 				CD3FCD4320E5516A0050C682 /* NetworkController.swift in Sources */,
 				CD210A7420FEC80700C37568 /* MainMenuViewController.swift in Sources */,
 				CD3FCD4020E540040050C682 /* RegistrationViewController.swift in Sources */,
@@ -475,8 +588,11 @@
 				CDBB370321051F6B00EA090E /* Place.swift in Sources */,
 				CD3FCD2E20E53BF00050C682 /* AppDelegate.swift in Sources */,
 				CDA0444120EFF120002F2F87 /* MapController.swift in Sources */,
+				CD4240902156DBEE00B82D5B /* SocketIOManager.swift in Sources */,
 				CDA0443E20EFED88002F2F87 /* MapViewController.swift in Sources */,
 				CD36AED82116BF2100536AAF /* CustomColor.swift in Sources */,
+				CD4240922156DBEE00B82D5B /* ChatCell.swift in Sources */,
+				CD4240912156DBEE00B82D5B /* ChatViewController.swift in Sources */,
 				CD210A6D20FE8B5A00C37568 /* UITextFieldDesignable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +698,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -636,13 +752,14 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		CD3FCD3D20E53BF20050C682 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47107631FBE3C48DA7DEE061 /* Pods-MeetMeApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -663,6 +780,7 @@
 		};
 		CD3FCD3E20E53BF20050C682 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48113C0DCA5793E2A8053FAB /* Pods-MeetMeApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -683,6 +801,7 @@
 		};
 		CD5B2336210A46540008A5A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 099E2BC1FAFA4EEAB5751E22 /* Pods-MeetMeAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -706,6 +825,7 @@
 		};
 		CD5B2337210A46540008A5A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BACED49F6BC2C0B3CCC9CE91 /* Pods-MeetMeAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
