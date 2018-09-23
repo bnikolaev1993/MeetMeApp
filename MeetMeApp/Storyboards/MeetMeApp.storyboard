@@ -623,7 +623,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekq-lu-1gr">
                                         <rect key="frame" x="8" y="0.0" width="359" height="60"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="0.85426476880000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="nGX-lb-m8Q"/>
                                         </constraints>
@@ -632,11 +632,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oTH-k8-BPn">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="254"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="68" width="375" height="249"/>
+                                        <color key="backgroundColor" red="0.88235294119999996" green="0.93333333330000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byZ-PN-E5Y">
-                                        <rect key="frame" x="277" y="359" width="98" height="40"/>
+                                        <rect key="frame" x="269" y="354" width="98" height="40"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KdQ-5O-AN6"/>
@@ -648,7 +648,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User is now typing a message..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBQ-3e-frm">
-                                        <rect key="frame" x="0.0" y="330" width="375" height="21"/>
+                                        <rect key="frame" x="0.0" y="325" width="375" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="8Rf-Vf-Mwg"/>
                                         </constraints>
@@ -657,35 +657,33 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GFu-6e-Tug">
-                                        <rect key="frame" x="0.0" y="359" width="367" height="40"/>
+                                        <rect key="frame" x="8" y="354" width="253" height="40"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="367" id="VnL-60-bwV"/>
-                                            <constraint firstAttribute="height" constant="40" id="nFP-yP-ZJd"/>
+                                            <constraint firstAttribute="height" constant="40" id="4EO-iN-JVq"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.93333333330000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="QBQ-3e-frm" firstAttribute="top" secondItem="oTH-k8-BPn" secondAttribute="bottom" constant="8" id="4JG-ez-lcF"/>
-                                    <constraint firstItem="GFu-6e-Tug" firstAttribute="top" secondItem="QBQ-3e-frm" secondAttribute="bottom" constant="8" id="62z-UV-qkj"/>
                                     <constraint firstItem="QBQ-3e-frm" firstAttribute="leading" secondItem="HAK-qg-PdO" secondAttribute="leading" id="64q-td-aW8"/>
+                                    <constraint firstAttribute="bottom" secondItem="GFu-6e-Tug" secondAttribute="bottom" constant="5" id="9XX-F9-ots"/>
                                     <constraint firstAttribute="trailing" secondItem="ekq-lu-1gr" secondAttribute="trailing" constant="8" id="BR1-bs-exW"/>
                                     <constraint firstItem="oTH-k8-BPn" firstAttribute="top" secondItem="ekq-lu-1gr" secondAttribute="bottom" constant="8" id="Br1-iJ-jBW"/>
                                     <constraint firstItem="byZ-PN-E5Y" firstAttribute="top" secondItem="QBQ-3e-frm" secondAttribute="bottom" constant="8" id="GVp-iT-odU"/>
-                                    <constraint firstAttribute="trailing" secondItem="byZ-PN-E5Y" secondAttribute="trailing" id="HhG-fA-Ecy"/>
+                                    <constraint firstAttribute="trailing" secondItem="byZ-PN-E5Y" secondAttribute="trailing" constant="8" id="HhG-fA-Ecy"/>
                                     <constraint firstItem="ekq-lu-1gr" firstAttribute="top" secondItem="HAK-qg-PdO" secondAttribute="top" id="KFx-Dw-BUo"/>
-                                    <constraint firstItem="GFu-6e-Tug" firstAttribute="top" secondItem="QBQ-3e-frm" secondAttribute="bottom" constant="8" id="Qge-CL-6OK"/>
                                     <constraint firstItem="oTH-k8-BPn" firstAttribute="leading" secondItem="HAK-qg-PdO" secondAttribute="leading" id="Tpe-9E-Ubs"/>
-                                    <constraint firstAttribute="bottom" secondItem="byZ-PN-E5Y" secondAttribute="bottom" id="YOK-dW-tcp"/>
-                                    <constraint firstItem="GFu-6e-Tug" firstAttribute="leading" secondItem="HAK-qg-PdO" secondAttribute="leading" id="ZFV-lC-Bhw"/>
+                                    <constraint firstAttribute="bottom" secondItem="byZ-PN-E5Y" secondAttribute="bottom" constant="5" id="YOK-dW-tcp"/>
                                     <constraint firstAttribute="trailing" secondItem="oTH-k8-BPn" secondAttribute="trailing" id="ZYg-dp-EOo"/>
                                     <constraint firstItem="ekq-lu-1gr" firstAttribute="leading" secondItem="HAK-qg-PdO" secondAttribute="leading" constant="8" id="gWw-LJ-Y6w"/>
+                                    <constraint firstItem="byZ-PN-E5Y" firstAttribute="leading" secondItem="GFu-6e-Tug" secondAttribute="trailing" constant="8" id="hTd-Ji-a2R"/>
                                     <constraint firstItem="QBQ-3e-frm" firstAttribute="top" secondItem="oTH-k8-BPn" secondAttribute="bottom" constant="8" id="mvL-ac-nfS"/>
-                                    <constraint firstAttribute="bottom" secondItem="GFu-6e-Tug" secondAttribute="bottom" id="rol-U5-bZQ"/>
                                     <constraint firstAttribute="trailing" secondItem="QBQ-3e-frm" secondAttribute="trailing" id="v0D-yE-n8l"/>
+                                    <constraint firstItem="GFu-6e-Tug" firstAttribute="leading" secondItem="HAK-qg-PdO" secondAttribute="leading" constant="8" id="xfs-07-DJT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -704,6 +702,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Message" image="message" id="rs2-SG-MWV"/>
                     <connections>
+                        <outlet property="conBottomBtn" destination="YOK-dW-tcp" id="dYi-LS-Od1"/>
+                        <outlet property="conBottomEditor" destination="9XX-F9-ots" id="IfR-fu-Pu7"/>
                         <outlet property="lblNewsBanner" destination="ekq-lu-1gr" id="cDW-do-PuK"/>
                         <outlet property="lblOtherUserActivityStatus" destination="QBQ-3e-frm" id="XXC-QS-e1N"/>
                         <outlet property="tblChat" destination="oTH-k8-BPn" id="TOt-MY-WZc"/>

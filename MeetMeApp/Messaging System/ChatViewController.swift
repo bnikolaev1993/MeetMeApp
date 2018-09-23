@@ -16,7 +16,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tvMessageEditor: UITextView!
     
-    
+    @IBOutlet weak var conBottomBtn: NSLayoutConstraint!
     @IBOutlet weak var conBottomEditor: NSLayoutConstraint!
     
     @IBOutlet weak var lblNewsBanner: UILabel!
@@ -44,20 +44,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //User's connection status notifications
         NotificationCenter.default.addObserver(self, selector: #selector(handleConnectedUserUpdateNotification(notification:)), name: Notification.Name(rawValue: "userWasConnectedNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleDisconnectedUserUpdateNotification(notification:)), name: Notification.Name(rawValue: "userWasDisconnectedNotification"), object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(handleLoadHistoryNotification(notification:)), name: Notification.Name(rawValue: "historyLoaded"), object: nil)
+        
         //Handle user typing action
         NotificationCenter.default.addObserver(self, selector: #selector(handleUserTypingNotification(notification:)), name: NSNotification.Name(rawValue: "userTypingNotification"), object: nil)
+        
+        //Handle keyboard interaction
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let tvc = self.tabBarController as! UserTabController
-        nickname = tvc.currentUser.username
-        socket = SocketIOManager(nickname:nickname ,place: placeID)
+        chatMessages.removeAll()
+        tblChat.reloadData()
         if placeID == nil {
             placeID = 0
         }
+        tvMessageEditor.text = "Enter the message…"
+        let tvc = self.tabBarController as! UserTabController
+        nickname = tvc.currentUser.username
+        socket = SocketIOManager(nickname:nickname ,place: placeID)
         print("Chat Place ID: ", placeID)
         socket.establishConnection()
         
@@ -65,35 +74,31 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         configureNewsBannerLabel()
         configureOtherUserActivityLabel()
         
-        chatMessages.removeAll()
-        tblChat.reloadData()
         socket.connectToServerWithNickname(nickname: nickname, placeID: placeID)
         tvMessageEditor.delegate = self
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //socket.getHistoryMessages(placeID: placeID)
-//        socket.loadHistory { (messageInfo) -> Void in
-//            DispatchQueue.main.async {
-//                self.chatMessages = messageInfo
-//                self.tblChat.reloadData()
-//                //                self.scrollToBottom()
-//            }
-//        }
         socket.getChatMessage { (messageInfo) -> Void in
             DispatchQueue.main.async {
                 self.chatMessages.append(messageInfo)
                 self.tblChat.reloadData()
-                //                self.scrollToBottom()
+                if self.chatMessages.count > 0 {
+                    self.tblChat.scrollToRow(at: IndexPath(row: self.chatMessages.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+                }
             }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.socket.getHistory()
         }
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController != self {
-           socket.closeConnection()
+            socket.closeConnection()
         }
     }
     
@@ -106,7 +111,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendMessage(_ sender: Any?) {
         if tvMessageEditor.text.count > 0 {
             socket.sendMessage(message: tvMessageEditor.text!, placeID: placeID, withNickname: nickname)
-            tvMessageEditor.text = ""
+            tvMessageEditor.text = "Enter the message…"
             tvMessageEditor.resignFirstResponder()
         }
     }
@@ -156,7 +161,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.bannerLabelTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideBannerLabel), userInfo: nil, repeats: false)
         }
     }
-
+    
     
     @objc func hideBannerLabel() {
         if bannerLabelTimer != nil {
@@ -210,6 +215,40 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    @objc func keyboardWillShow(notification: Notification) {
+        if let info = notification.userInfo {
+            let rect: CGRect = info["UIKeyboardFrameEndUserInfoKey"] as! CGRect
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+                self.conBottomEditor.constant += rect.height
+                self.conBottomBtn.constant += rect.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        if let info = notification.userInfo {
+            let rect: CGRect = info["UIKeyboardFrameEndUserInfoKey"] as! CGRect
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+                self.conBottomEditor.constant -= rect.height
+                self.conBottomBtn.constant -= rect.height
+            }
+        }
+    }
+    
+    @objc func handleLoadHistoryNotification(notification: Notification) {
+        DispatchQueue.main.async {
+            self.chatMessages = notification.object as! [[String: AnyObject]]
+            self.tblChat.reloadData()
+            if self.chatMessages.count > 0 {
+                self.tblChat.scrollToRow(at: IndexPath(row: self.chatMessages.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+            }
+        }
+    }
+    
     // MARK: UITableView Delegate and Datasource Methods
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -233,12 +272,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if senderNickname == nickname {
             cell.lblChatMessage.textAlignment = NSTextAlignment.right
             cell.lblMessageDetails.textAlignment = NSTextAlignment.right
-            
+            cell.lblMessageDetails.text = "  by YOU @ \(messageDate)"
+            cell.lblChatMessage.textColor = lblNewsBanner.backgroundColor
+        } else {
+            cell.lblChatMessage.textAlignment = NSTextAlignment.left
+            cell.lblMessageDetails.textAlignment = NSTextAlignment.left
+            cell.lblMessageDetails.text = "  by \(senderNickname.uppercased()) @ \(messageDate)"
             cell.lblChatMessage.textColor = lblNewsBanner.backgroundColor
         }
         
         cell.lblChatMessage.text = message
-        cell.lblMessageDetails.text = "by \(senderNickname.uppercased()) @ \(messageDate)"
         
         cell.lblChatMessage.textColor = UIColor.darkGray
         
@@ -250,9 +293,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         socket.sendStartTypingMessage(nickname: nickname)
+        tvMessageEditor.text = ""
         return true
     }
-    
     
     // MARK: UIGestureRecognizerDelegate Methods
     

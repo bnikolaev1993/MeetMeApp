@@ -30,8 +30,6 @@ class SocketIOManager: NSObject {
     }
     
     func connectToServerWithNickname(nickname: String, placeID: Int) {
-        socket.emit("connectUser", nickname, placeID)
-        print("Sockets are listening for others…")
         listenForOtherMessages()
     }
     
@@ -42,6 +40,11 @@ class SocketIOManager: NSObject {
     
     func sendMessage(message: String, placeID: Int, withNickname nickname: String) {
         socket.emit("chatMessage", nickname, placeID, message)
+    }
+    
+    func getHistory() {
+        print("HI!!!")
+        socket.emit("getHistoryMessages")
     }
     
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
@@ -87,5 +90,17 @@ class SocketIOManager: NSObject {
             let notName = Notification.Name.init("userTypingNotification")
             NotificationCenter.default.post(name: notName, object: dataArray[0] as? [String: AnyObject])
         }
+        
+        socket.on("loadHistory") { (data, socketAck) in
+            var messageDictionary = [[String: AnyObject]]()
+            let v = data[0] as! NSArray
+            for item in v {
+                messageDictionary.append(item as! [String:AnyObject])
+            }
+            print(messageDictionary)
+            let notName = Notification.Name.init("historyLoaded")
+            NotificationCenter.default.post(name: notName, object: messageDictionary)
+        }
+        
     }
 }
